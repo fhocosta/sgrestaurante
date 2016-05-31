@@ -1,0 +1,9 @@
+New log file opened at Tue May 31 15:23:23 AMT 2016 by 9344@fhocosta-pc
+Sending msg to client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a: DetachedLogEvent(LogMessage(debug,sbt server socket logs are in: /home/fhocosta/IdeaProjects/sgrestaurante/.sbtserver/connections/master.log))
+Sending msg to client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a: DetachedLogEvent(LogMessage(debug,sbt general server logs are in: /home/fhocosta/IdeaProjects/sgrestaurante/.sbtserver/master.log))
+Sending msg to client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a: DetachedLogEvent(LogMessage(debug,sbt client logs are in: /home/fhocosta/IdeaProjects/sgrestaurante/.sbtserver/connections/activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a.log))
+Reading next message from client.
+Client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a EOF, shutting down.
+Stopping client.
+Dropping message (0,ReceivedResponse()) to dead client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a
+Client activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a thread exiting.

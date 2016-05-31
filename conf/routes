@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Listar Clientes
+GET     /clientes/all                      controllers.ClienteController.list()
+
+# Adicionar Cliente
+GET     /clientes/new                      controllers.ClienteController.create()
+POST    /clientes                          controllers.ClienteController.save()
+
+# Editar Clientes Existentes
+GET     /clientes/:id                      controllers.ClienteController.edit(id: Long)
+POST    /clientes/:id                      controllers.ClienteController.update(id: Long)
+
+# Apagar um Cliente
+POST    /clientes/:id/delete                  controllers.ClienteController.delete(id :Long)

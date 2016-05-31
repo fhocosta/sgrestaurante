@@ -1,0 +1,12 @@
+@(form: Form[Cliente])
+
+<h1>Criar novo Cliente!</h1>
+<form action="/clientes" method="post">
+    <input type="text" name="nome">
+    <input type="text" name="email">
+    <input type="text" name="telefone">
+    <input type="password" name="senha">
+    <button type="submit">Salvar</button>
+    <button type="reset">Limpar</button>
+</form>
+
