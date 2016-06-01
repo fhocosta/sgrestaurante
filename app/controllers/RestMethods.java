@@ -1,14 +1,12 @@
 package controllers;
 
-import com.google.inject.Inject;
-import play.data.FormFactory;
-import play.mvc.Controller;
 import play.mvc.Result;
 
 /**
- * Created by fhocosta on 31/05/16.
+ * Created by fhocosta on 01/06/16.
  */
-interface RestMethods {
+public interface RestMethods {
+
     public Result list();
 
     public Result create();
@@ -20,4 +18,5 @@ interface RestMethods {
     public Result update(Long id);
 
     public Result delete(Long id);
+
 }
