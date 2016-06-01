@@ -48,9 +48,8 @@ public class ClienteController extends Controller {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente != null) {
             return ok(play.libs.Json.toJson(cliente));
-        } else {
-            return notFound();
         }
+        return notFound();
     }
 
     @Transactional
@@ -68,19 +67,21 @@ public class ClienteController extends Controller {
         cliente.setNome(atualizarCliente.get().getNome());
         cliente.setEmail(atualizarCliente.get().getEmail());
         cliente.setTelefone(atualizarCliente.get().getTelefone());
+        cliente.setCpf(atualizarCliente.get().getCpf());
+        cliente.setEndereco(atualizarCliente.get().getTelefone());
         cliente.save();
 
         return ok(play.libs.Json.toJson(cliente));
     }
 
+    @Transactional
     public Result delete(Long id) {
         Cliente cliente = Cliente.find.byId(id);
-        if(cliente != null){
+        if (cliente != null) {
             cliente.delete();
             return ok("Cliente apagado com Sucesso!");
-        }else{
-            return notFound();
         }
+        return notFound();
 
     }
 

@@ -2,16 +2,34 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+##### Clientes #####
+
 # Listar Clientes
-GET     /clientes/all                      controllers.ClienteController.list()
+GET     /clientes/all                       controllers.ClienteController.list()
 
 # Adicionar Cliente
-GET     /clientes/new                      controllers.ClienteController.create()
-POST    /clientes                          controllers.ClienteController.save()
+GET     /clientes/new                       controllers.ClienteController.create()
+POST    /clientes                           controllers.ClienteController.save()
 
 # Editar Clientes Existentes
-GET     /clientes/:id                      controllers.ClienteController.edit(id: Long)
-POST    /clientes/:id                      controllers.ClienteController.update(id: Long)
+GET     /clientes/:id                       controllers.ClienteController.edit(id: Long)
+POST    /clientes/:id                       controllers.ClienteController.update(id: Long)
 
 # Apagar um Cliente
-POST    /clientes/:id/delete                  controllers.ClienteController.delete(id :Long)
+POST    /clientes/:id/delete                controllers.ClienteController.delete(id :Long)
+
+##### Fornecedores #####
+
+# Listar Fornecedores
+GET     /fornecedores/all                   controllers.FornecedorController.list()
+
+# Adicionar Fornecedor
+GET     /fornecedores/new                   controllers.FornecedorController.create()
+POST    /fornecedores                       controllers.FornecedorController.save()
+
+# Editar Fornecedores Existentes
+GET     /fornecedores/:id                   controllers.FornecedorController.edit(id: Long)
+POST    /fornecedores/:id                   controllers.FornecedorController.update(id: Long)
+
+# Apagar um Fornecedor
+POST    /fornecedores/:id/delete            controllers.FornecedorController.delete(id :Long)

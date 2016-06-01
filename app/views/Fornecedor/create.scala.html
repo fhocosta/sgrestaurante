@@ -1,0 +1,12 @@
+@(form: Form[Fornecedor])
+
+<h1>Criar novo Cliente!</h1>
+<form action="/fornecedores" method="post">
+    <input type="text" name="nome" placeholder="Digite o Nome do Fornecedor">
+    <input type="text" name="cnpj" placeholder="Digite o CNPJ do Fornecedor">
+    <input type="text" name="endereco" placeholder="Digite o endereco do Fornecedor">
+    <input type="text" name="telefone" placeholder="Digite o telefone do Fornecedor">
+    <button type="submit">Salvar</button>
+    <button type="reset">Limpar</button>
+</form>
+

@@ -1,13 +1,13 @@
-New log file opened at Tue May 31 15:23:23 AMT 2016 by 9344@fhocosta-pc
-Taking next connection to: 34959
-New client attempting to connect on port: 55235-34959
-  Address = /127.0.1.1:34959
-This client on port 55235 has uuid 6e2d8af1-9b76-4385-83c0-15973b10a7cb configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
-Connected Clients: activator-6e2d8af1-9b76-4385-83c0-15973b10a7cb
-Taking next connection to: 34959
-New client attempting to connect on port: 55236-34959
-  Address = /127.0.1.1:34959
-Handshake exception on socket: 55236
+New log file opened at Tue May 31 18:43:52 AMT 2016 by 1320@MBP-de-fhocosta
+Taking next connection to: 51372
+New client attempting to connect on port: 51373-51372
+  Address = /172.21.15.54:51372
+This client on port 51373 has uuid 28fe4385-e256-4a4d-b431-e7d0cecdeb1b configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-28fe4385-e256-4a4d-b431-e7d0cecdeb1b
+Taking next connection to: 51372
+New client attempting to connect on port: 51389-51372
+  Address = /172.21.15.54:51372
+Handshake exception on socket: 51389
 sbt.impl.ipc.HandshakeException: Unable to perform handshake
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
 	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
@@ -17,15 +17,30 @@ Caused by: java.io.EOFException
 	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
 	... 2 more
-Taking next connection to: 34959
-New client attempting to connect on port: 55237-34959
-  Address = /127.0.1.1:34959
-This client on port 55237 has uuid 9426c0ef-6884-4a10-990d-05193259fe7d configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
-Connected Clients: activator-6e2d8af1-9b76-4385-83c0-15973b10a7cb, activator-9426c0ef-6884-4a10-990d-05193259fe7d
-Taking next connection to: 34959
-New client attempting to connect on port: 55238-34959
-  Address = /127.0.1.1:34959
-Handshake exception on socket: 55238
+Taking next connection to: 51372
+New client attempting to connect on port: 51390-51372
+  Address = /172.21.15.54:51372
+This client on port 51390 has uuid b6dca20b-cad2-4a41-bf9f-e6f26b9ad5b4 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: activator-28fe4385-e256-4a4d-b431-e7d0cecdeb1b, play-fork-run-b6dca20b-cad2-4a41-bf9f-e6f26b9ad5b4
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+New client attempting to connect on port: 51698-51372
+  Address = /172.21.15.54:51372
+Handshake exception on socket: 51698
 sbt.impl.ipc.HandshakeException: Unable to perform handshake
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
 	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
@@ -35,15 +50,24 @@ Caused by: java.io.EOFException
 	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
 	... 2 more
-Taking next connection to: 34959
-New client attempting to connect on port: 55239-34959
-  Address = /127.0.1.1:34959
-This client on port 55239 has uuid f2ea0e0d-1b04-498e-82d3-be91a350e49a configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
-Connected Clients: activator-6e2d8af1-9b76-4385-83c0-15973b10a7cb, activator-9426c0ef-6884-4a10-990d-05193259fe7d, activator-f2ea0e0d-1b04-498e-82d3-be91a350e49a
-Taking next connection to: 34959
-New client attempting to connect on port: 55244-34959
-  Address = /127.0.1.1:34959
-Handshake exception on socket: 55244
+Taking next connection to: 51372
+New client attempting to connect on port: 51699-51372
+  Address = /172.21.15.54:51372
+This client on port 51699 has uuid fe002246-8097-45c4-8604-bc9d2893a2f3 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-28fe4385-e256-4a4d-b431-e7d0cecdeb1b, play-fork-run-b6dca20b-cad2-4a41-bf9f-e6f26b9ad5b4, activator-fe002246-8097-45c4-8604-bc9d2893a2f3
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+New client attempting to connect on port: 51750-51372
+  Address = /172.21.15.54:51372
+Handshake exception on socket: 51750
 sbt.impl.ipc.HandshakeException: Unable to perform handshake
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
 	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
@@ -53,120 +77,162 @@ Caused by: java.io.EOFException
 	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
 	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
 	... 2 more
-Taking next connection to: 34959
-New client attempting to connect on port: 55245-34959
-  Address = /127.0.1.1:34959
-This client on port 55245 has uuid 5957bf29-6328-488b-9bba-1def08c44c19 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
-Connected Clients: activator-6e2d8af1-9b76-4385-83c0-15973b10a7cb, play-fork-run-5957bf29-6328-488b-9bba-1def08c44c19
-Taking next connection to: 34959
+Taking next connection to: 51372
+New client attempting to connect on port: 51751-51372
+  Address = /172.21.15.54:51372
+This client on port 51751 has uuid 0afb0362-9db2-495b-afee-1e9a57b35c26 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: activator-28fe4385-e256-4a4d-b431-e7d0cecdeb1b, play-fork-run-b6dca20b-cad2-4a41-bf9f-e6f26b9ad5b4, activator-fe002246-8097-45c4-8604-bc9d2893a2f3, play-fork-run-0afb0362-9db2-495b-afee-1e9a57b35c26
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
 Checking to see if clients are empty...
-We have 1 non-daemon clients, continuing serving connections.
-Taking next connection to: 34959
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
+Checking to see if clients are empty...
+We have 2 non-daemon clients, continuing serving connections.
+Taking next connection to: 51372
