@@ -13,7 +13,7 @@ import java.util.List;
 public class Cargo extends Model {
 
     @Id
-    private Long id;
+    private long id;
     @Column(name="nome")
     private String nome;
 

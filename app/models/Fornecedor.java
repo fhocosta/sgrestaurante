@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Fornecedor extends Model {
 
     @Id
-    private Long id;
+    private long id;
     @Column(name = "nome")
     private String nome;
     @Column(name = "cnpj")

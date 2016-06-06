@@ -13,13 +13,14 @@ import java.util.List;
  * Created by fhocosta on 31/05/16.
  */
 public class CargoController extends Controller implements RestMethods {
+
     @Inject
     FormFactory formFactory;
 
     @Override
     public Result list() {
         List<Cargo> cargos = Cargo.find.all();
-        if(cargos.size() != 0){
+        if (cargos.size() != 0) {
             return ok(play.libs.Json.toJson(cargos))
         }
         return noContent();
@@ -45,7 +46,7 @@ public class CargoController extends Controller implements RestMethods {
     @Override
     public Result edit(Long id) {
         Cargo cargo = Cargo.find.byId(id);
-        if(cargo != null){
+        if (cargo != null) {
             return ok(play.libs.Json.toJson(cargo));
         }
         return notFound();
