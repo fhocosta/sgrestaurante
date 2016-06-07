@@ -1,6 +1,6 @@
 package controllers;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 import models.Funcionario;
 import play.data.Form;
 import play.data.FormFactory;

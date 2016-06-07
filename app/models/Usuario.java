@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "tbl_usuario")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Usuario extends Model {
 
     @Id

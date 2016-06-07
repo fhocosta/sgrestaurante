@@ -6,7 +6,7 @@ import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import javax.inject.Inject;
+import com.google.inject.Inject;
 import java.util.List;
 
 /**

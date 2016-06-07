@@ -1,11 +1,12 @@
 package controllers;
 
+import com.google.inject.Inject;
 import models.Cardapio;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
 
-import javax.inject.Inject;
+
 import play.mvc.Result;
 
 import java.util.List;

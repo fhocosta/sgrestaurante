@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "tbl_clientes")
+@DiscriminatorValue("C")
 public class Cliente extends Usuario {
 
     @Id

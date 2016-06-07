@@ -10,7 +10,7 @@ import java.util.List;
  * Created by fhocosta on 31/05/16.
  */
 @Entity
-@Table(name = "tbl_funcionario")
+@DiscriminatorValue("F")
 public class Funcionario extends Usuario {
 
     @Id

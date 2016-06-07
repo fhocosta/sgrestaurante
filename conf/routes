@@ -5,219 +5,219 @@
 ##### Cardapios #####
 
 # Listar Cardapios
-    GET     /cardapios/all                              controllers.CardapioController.list()
+GET     /cardapios/all                              controllers.CardapioController.list()
 
 # Adicionar Cardapio
-    GET     /cardapios/new                              controllers.CardapioController.create()
-    POST    /cardapios                                  controllers.CardapioController.save()
+GET     /cardapios/new                              controllers.CardapioController.create()
+POST    /cardapios                                  controllers.CardapioController.save()
 
 # Editar Cardapios Existentes
-    GET     /cardapios/:id                              controllers.CardapioController.edit(id: Long)
-    POST    /cardapios/:id                              controllers.CardapioController.update(id: Long)
+GET     /cardapios/:id                              controllers.CardapioController.edit(id: Long)
+POST    /cardapios/:id                              controllers.CardapioController.update(id: Long)
 
 # Apagar um Cardapio
-    POST    /cardapios/:id/delete                       controllers.CardapioController.delete(id :Long)
+POST    /cardapios/:id/delete                       controllers.CardapioController.delete(id :Long)
 
 
 ##### Cargos #####
 
 # Listar Cargos
-    GET     /cargos/all                                 controllers.CargoController.list()
+GET     /cargos/all                                 controllers.CargoController.list()
 
 # Adicionar Cargo
-    GET     /cargos/new                                 controllers.CargoController.create()
-    POST    /cargos                                     controllers.CargoController.save()
+GET     /cargos/new                                 controllers.CargoController.create()
+POST    /cargos                                     controllers.CargoController.save()
 
 # Editar Cargos Existentes
-    GET     /cargos/:id                                 controllers.CargoController.edit(id: Long)
-    POST    /cargos/:id                                 controllers.CargoController.update(id: Long)
+GET     /cargos/:id                                 controllers.CargoController.edit(id: Long)
+POST    /cargos/:id                                 controllers.CargoController.update(id: Long)
 
 # Apagar um Cargo
-    POST    /cargos/:id/delete                          controllers.CargoController.delete(id :Long)
+POST    /cargos/:id/delete                          controllers.CargoController.delete(id :Long)
 
 
 ##### Clientes #####
 
 # Listar Clientes
-    GET     /clientes/all                               controllers.ClienteController.list()
+GET     /clientes/all                               controllers.ClienteController.list()
 
 # Adicionar Cliente
-    GET     /clientes/new                               controllers.ClienteController.create()
-    POST    /clientes                                   controllers.ClienteController.save()
+GET     /clientes/new                               controllers.ClienteController.create()
+POST    /clientes                                   controllers.ClienteController.save()
 
 # Editar Clientes Existentes
-    GET     /clientes/:id                               controllers.ClienteController.edit(id: Long)
-    POST    /clientes/:id                               controllers.ClienteController.update(id: Long)
+GET     /clientes/:id                               controllers.ClienteController.edit(id: Long)
+POST    /clientes/:id                               controllers.ClienteController.update(id: Long)
 
 # Apagar um Cliente
-    POST    /clientes/:id/delete                        controllers.ClienteController.delete(id :Long)
+POST    /clientes/:id/delete                        controllers.ClienteController.delete(id :Long)
 
 
 ##### Comandas #####
 
 # Listar Comandas
-    GET     /comandas/all                               controllers.ComandaController.list()
+GET     /comandas/all                               controllers.ComandaController.list()
 
 # Adicionar Comanda
-    GET     /comandas/new                               controllers.ComandaController.create()
-    POST    /comandas                                   controllers.ComandaController.save()
+GET     /comandas/new                               controllers.ComandaController.create()
+POST    /comandas                                   controllers.ComandaController.save()
 
 # Editar Comandas Existentes
-    GET     /comandas/:id                               controllers.ComandaController.edit(id: Long)
-    POST    /comandas/:id                               controllers.ComandaController.update(id: Long)
+GET     /comandas/:id                               controllers.ComandaController.edit(id: Long)
+POST    /comandas/:id                               controllers.ComandaController.update(id: Long)
 
 # Apagar uma Comanda
-    POST    /comandas/:id/delete                        controllers.ComandaController.delete(id :Long)
+POST    /comandas/:id/delete                        controllers.ComandaController.delete(id :Long)
 
 
 ##### Cortesias #####
 
 # Listar Cortesias
-    GET     /cortesias/all                              controllers.CortesiaController.list()
+GET     /cortesias/all                              controllers.CortesiaController.list()
 
 # Adicionar Cortesia
-    GET     /cortesias/new                              controllers.CortesiaController.create()
-    POST    /cortesias                                  controllers.CortesiaController.save()
+GET     /cortesias/new                              controllers.CortesiaController.create()
+POST    /cortesias                                  controllers.CortesiaController.save()
 
 # Editar Cortesias Existentes
-    GET     /cortesias/:id                              controllers.CortesiaController.edit(id: Long)
-    POST    /cortesias/:id                              controllers.CortesiaController.update(id: Long)
+GET     /cortesias/:id                              controllers.CortesiaController.edit(id: Long)
+POST    /cortesias/:id                              controllers.CortesiaController.update(id: Long)
 
 # Apagar uma Cortesia
-    POST    /cortesias/:id/delete                       controllers.CortesiaController.delete(id :Long)
+POST    /cortesias/:id/delete                       controllers.CortesiaController.delete(id :Long)
 
 
 ##### Fornecedor #####
 
 # Listar Fornecedores
-    GET     /fornecedores/all                           controllers.FornecedorController.list()
+GET     /fornecedores/all                           controllers.FornecedorController.list()
 
 # Adicionar Fornecedor
-    GET     /fornecedores/new                           controllers.FornecedorController.create()
-    POST    /fornecedores                               controllers.FornecedorController.save()
+GET     /fornecedores/new                           controllers.FornecedorController.create()
+POST    /fornecedores                               controllers.FornecedorController.save()
 
 # Editar Fornecedores Existentes
-    GET     /fornecedores/:id                           controllers.FornecedorController.edit(id: Long)
-    POST    /fornecedores/:id                           controllers.FornecedorController.update(id: Long)
+GET     /fornecedores/:id                           controllers.FornecedorController.edit(id: Long)
+POST    /fornecedores/:id                           controllers.FornecedorController.update(id: Long)
 
 # Apagar um Fornecedor
-    POST    /fornecedores/:id/delete                    controllers.FornecedorController.delete(id :Long)
+POST    /fornecedores/:id/delete                    controllers.FornecedorController.delete(id :Long)
 
 
 ##### Funcionarios #####
 
 # Listar Funcionarios
-    GET     /funcionarios/all                           controllers.FuncionarioController.list()
+GET     /funcionarios/all                           controllers.FuncionarioController.list()
 
 # Adicionar Funcionario
-    GET     /funcionarios/new                           controllers.FuncionarioController.create()
-    POST    /funcionarios                               controllers.FuncionarioController.save()
+GET     /funcionarios/new                           controllers.FuncionarioController.create()
+POST    /funcionarios                               controllers.FuncionarioController.save()
 
 # Editar Funcionarios Existentes
-    GET     /funcionarios/:id                           controllers.FuncionarioController.edit(id: Long)
-    POST    /funcionarios/:id                           controllers.FuncionarioController.update(id: Long)
+GET     /funcionarios/:id                           controllers.FuncionarioController.edit(id: Long)
+POST    /funcionarios/:id                           controllers.FuncionarioController.update(id: Long)
 
 # Apagar um Funcionario
-    POST    /funcionarios/:id/delete                    controllers.FuncionarioController.delete(id :Long)
+POST    /funcionarios/:id/delete                    controllers.FuncionarioController.delete(id :Long)
 
 
 ##### Mesas #####
 
 # Listar Mesas
-    GET     /mesas/all                                  controllers.MesaController.list()
+GET     /mesas/all                                  controllers.MesaController.list()
 
 # Adicionar Mesa
-    GET     /mesas/new                                  controllers.MesaController.create()
-    POST    /mesas                                      controllers.MesaController.save()
+GET     /mesas/new                                  controllers.MesaController.create()
+POST    /mesas                                      controllers.MesaController.save()
 
 # Editar Mesas Existentes
-    GET     /mesas/:id                                  controllers.MesaController.edit(id: Long)
-    POST    /mesas/:id                                  controllers.MesaController.update(id: Long)
+GET     /mesas/:id                                  controllers.MesaController.edit(id: Long)
+POST    /mesas/:id                                  controllers.MesaController.update(id: Long)
 
 # Apagar uma Mesa
-    POST    /mesas/:id/delete                           controllers.MesaController.delete(id :Long)
+POST    /mesas/:id/delete                           controllers.MesaController.delete(id :Long)
 
 
 ##### Pedidos #####
 
 # Listar Pedidos
-    GET     /pedidos/all                                  controllers.PedidoController.list()
+GET     /pedidos/all                                controllers.PedidoController.list()
 
 # Adicionar Pedido
-    GET     /pedidos/new                                  controllers.PedidoController.create()
-    POST    /pedidos                                      controllers.PedidoController.save()
+GET     /pedidos/new                                controllers.PedidoController.create()
+POST    /pedidos                                    controllers.PedidoController.save()
 
 # Editar Pedidos Existentes
-    GET     /pedidos/:id                                  controllers.PedidoController.edit(id: Long)
-    POST    /pedidos/:id                                  controllers.PedidoController.update(id: Long)
+GET     /pedidos/:id                                controllers.PedidoController.edit(id: Long)
+POST    /pedidos/:id                                controllers.PedidoController.update(id: Long)
 
 # Apagar um Pedido
-    POST    /pedidos/:id/delete                           controllers.PedidoController.delete(id :Long)
+POST    /pedidos/:id/delete                         controllers.PedidoController.delete(id :Long)
 
 
 ##### Produtos #####
 
 # Listar Produtos
-    GET     /produtos/all                                  controllers.ProdutoController.list()
+GET     /produtos/all                               controllers.ProdutoController.list()
 
 # Adicionar Produto
-    GET     /produtos/new                                  controllers.ProdutoController.create()
-    POST    /produtos                                      controllers.ProdutoController.save()
+GET     /produtos/new                               controllers.ProdutoController.create()
+POST    /produtos                                   controllers.ProdutoController.save()
 
 # Editar Produtos Existentes
-    GET     /produtos/:id                                  controllers.ProdutoController.edit(id: Long)
-    POST    /produtos/:id                                  controllers.ProdutoController.update(id: Long)
+GET     /produtos/:id                               controllers.ProdutoController.edit(id: Long)
+POST    /produtos/:id                               controllers.ProdutoController.update(id: Long)
 
 # Apagar um Produto
-    POST    /produtos/:id/delete                           controllers.ProdutoController.delete(id :Long)
+POST    /produtos/:id/delete                        controllers.ProdutoController.delete(id :Long)
 
 
 ##### Reservas #####
 
 # Listar Reservas
-    GET     /reservas/all                                  controllers.ReservaController.list()
+GET     /reservas/all                               controllers.ReservaController.list()
 
 # Adicionar Reserva
-    GET     /reservas/new                                  controllers.ReservaController.create()
-    POST    /reservas                                      controllers.ReservaController.save()
+GET     /reservas/new                               controllers.ReservaController.create()
+POST    /reservas                                   controllers.ReservaController.save()
 
 # Editar Reservas Existentes
-    GET     /reservas/:id                                  controllers.ReservaController.edit(id: Long)
-    POST    /reservas/:id                                  controllers.ReservaController.update(id: Long)
+GET     /reservas/:id                               controllers.ReservaController.edit(id: Long)
+POST    /reservas/:id                               controllers.ReservaController.update(id: Long)
 
 # Apagar uma Reserva
-    POST    /reservas/:id/delete                           controllers.ReservaController.delete(id :Long)
+POST    /reservas/:id/delete                        controllers.ReservaController.delete(id :Long)
 
 
 ##### Statuses #####
 
 # Listar Statuses
-    GET     /status/all                                  controllers.StatusController.list()
+GET     /status/all                                 controllers.StatusController.list()
 
 # Adicionar Status
-    GET     /status/new                                  controllers.StatusController.create()
-    POST    /status                                      controllers.StatusController.save()
+GET     /status/new                                 controllers.StatusController.create()
+POST    /status                                     controllers.StatusController.save()
 
 # Editar Statuses Existentes
-    GET     /status/:id                                  controllers.StatusController.edit(id: Long)
-    POST    /status/:id                                  controllers.StatusController.update(id: Long)
+GET     /status/:id                                 controllers.StatusController.edit(id: Long)
+POST    /status/:id                                 controllers.StatusController.update(id: Long)
 
 # Apagar um Status
-    POST    /status/:id/delete                           controllers.StatusController.delete(id :Long)
+POST    /status/:id/delete                          controllers.StatusController.delete(id :Long)
 
 
 ##### Sugestoes #####
 
 # Listar Sugestoes
-    GET     /sugestoes/all                                  controllers.SugestaoController.list()
+GET     /sugestoes/all                              controllers.SugestaoController.list()
 
 # Adicionar Sugestao
-    GET     /sugestoes/new                                  controllers.SugestaoController.create()
-    POST    /sugestoes                                      controllers.SugestaoController.save()
+GET     /sugestoes/new                              controllers.SugestaoController.create()
+POST    /sugestoes                                  controllers.SugestaoController.save()
 
 # Editar Sugestoes Existentes
-    GET     /sugestoes/:id                                  controllers.SugestaoController.edit(id: Long)
-    POST    /sugestoes/:id                                  controllers.SugestaoController.update(id: Long)
+GET     /sugestoes/:id                              controllers.SugestaoController.edit(id: Long)
+POST    /sugestoes/:id                              controllers.SugestaoController.update(id: Long)
 
 # Apagar uma Sugestao
-    POST    /sugestoes/:id/delete                           controllers.SugestaoController.delete(id :Long)
+POST    /sugestoes/:id/delete                       controllers.SugestaoController.delete(id :Long)
