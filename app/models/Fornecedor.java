@@ -1,11 +1,13 @@
 package models;
 
 import com.avaje.ebean.Model;
+import scala.collection.immutable.StreamViewLike;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * Created by fhocosta on 31/05/16.
@@ -36,6 +38,30 @@ public class Fornecedor extends Model {
     }
 
     public static Finder<Long, Fornecedor> find = new Finder<Long, Fornecedor>(Fornecedor.class);
+
+    public static List<Fornecedor> all() {
+        return find.all();
+    }
+
+    public static Fornecedor create(Fornecedor fornecedor) {
+        fornecedor.save();
+        return fornecedor;
+    }
+
+    public static Fornecedor update(Long id, Fornecedor f) {
+        Fornecedor fornecedor = find.byId(id);
+
+        if (f.getNome() != null) fornecedor.setNome(f.getNome());
+        if (f.getCnpj() != null) fornecedor.setCnpj(f.getCnpj());
+        if (f.getEndereco() != null) fornecedor.setEndereco(f.getEndereco());
+        if (f.getTelefone() != null) fornecedor.setTelefone(f.getTelefone());
+
+        return create(fornecedor);
+    }
+
+    public static void delete(Long id) {
+        find.ref(id).delete();
+    }
 
     public String getNome() {
         return nome;

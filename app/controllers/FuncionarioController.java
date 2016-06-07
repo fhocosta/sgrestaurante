@@ -1,7 +1,6 @@
 package controllers;
 
-import com.google.inject.Inject;
-import models.Cargo;
+import javax.inject.Inject;
 import models.Funcionario;
 import play.data.Form;
 import play.data.FormFactory;
@@ -20,7 +19,7 @@ public class FuncionarioController extends Controller implements RestMethods {
 
     @Override
     public Result list() {
-        List<Funcionario> funcionarios = Funcionario.find.all();
+        List<Funcionario> funcionarios = Funcionario.all();
         if (funcionarios.size() != 0) {
             return ok(play.libs.Json.toJson(funcionarios));
         }
@@ -35,18 +34,19 @@ public class FuncionarioController extends Controller implements RestMethods {
 
     @Override
     public Result save() {
-        Form<Funcionario> funcionario = formFactory.form(Funcionario.class).bindFromRequest();
-        if (funcionario.hasErrors()) {
-            return badRequest(funcionario.errorsAsJson());
+        Form<Funcionario> form = formFactory.form(Funcionario.class).bindFromRequest();
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
-        Funcionario novoFuncionario = funcionario.get();
-        novoFuncionario.save();
-        return ok(play.libs.Json.toJson(novoFuncionario));
+
+        Funcionario funcionario = Funcionario.create(form.get());
+
+        return ok(play.libs.Json.toJson(funcionario));
     }
 
     @Override
     public Result edit(Long id) {
-        Funcionario funcionario = Funcionario.find.byId(id);
+        Funcionario funcionario= Funcionario.find.byId(id);
         if (funcionario != null) {
             return ok(play.libs.Json.toJson(funcionario));
         }
@@ -55,27 +55,18 @@ public class FuncionarioController extends Controller implements RestMethods {
 
     @Override
     public Result update(Long id) {
-
         Funcionario funcionario = Funcionario.find.byId(id);
         if (funcionario == null) {
             return notFound();
         }
 
-        Form<Funcionario> atualizarFuncionario = formFactory.form(Funcionario.class).bindFromRequest();
+        Form<Funcionario> form = formFactory.form(Funcionario.class).bindFromRequest();
 
-        if (atualizarFuncionario.hasErrors()) {
-            return badRequest(atualizarFuncionario.errorsAsJson());
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
 
-        funcionario.setNome(atualizarFuncionario.get().getNome());
-        funcionario.setCpf(atualizarFuncionario.get().getCpf());
-        funcionario.setEndereco(atualizarFuncionario.get().getEndereco());
-
-        Cargo cargo = Cargo.find.byId(atualizarFuncionario.get().getCargo().getId());
-        funcionario.setCargo(cargo);
-
-        funcionario.setEmail(atualizarFuncionario.get().getEmail());
-        funcionario.save();
+        funcionario = Funcionario.update(id, form.get());
 
         return ok(play.libs.Json.toJson(funcionario));
     }
@@ -84,7 +75,7 @@ public class FuncionarioController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Funcionario funcionario = Funcionario.find.byId(id);
         if (funcionario != null) {
-            funcionario.delete();
+            Funcionario.delete(id);
             return ok("Funcionario apagado com Sucesso!");
         }
         return notFound();

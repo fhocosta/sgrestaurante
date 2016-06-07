@@ -1,6 +1,6 @@
 package controllers;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import models.Cargo;
 import play.data.Form;
 import play.data.FormFactory;
@@ -19,9 +19,9 @@ public class CargoController extends Controller implements RestMethods {
 
     @Override
     public Result list() {
-        List<Cargo> cargos = Cargo.find.all();
+        List<Cargo> cargos = Cargo.all();
         if (cargos.size() != 0) {
-            return ok(play.libs.Json.toJson(cargos))
+            return ok(play.libs.Json.toJson(cargos));
         }
         return noContent();
     }
@@ -34,13 +34,14 @@ public class CargoController extends Controller implements RestMethods {
 
     @Override
     public Result save() {
-        Form<Cargo> cargo = formFactory.form(Cargo.class).bindFromRequest();
-        if (cargo.hasErrors()) {
-            return badRequest(cargo.errorsAsJson());
+        Form<Cargo> form = formFactory.form(Cargo.class).bindFromRequest();
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
-        Cargo novoCargo = cargo.get();
-        novoCargo.save();
-        return ok(play.libs.Json.toJson(novoCargo));
+
+        Cargo cargo = Cargo.create(form.get());
+
+        return ok(play.libs.Json.toJson(cargo));
     }
 
     @Override
@@ -58,14 +59,14 @@ public class CargoController extends Controller implements RestMethods {
         if (cargo == null) {
             return notFound();
         }
-        Form<Cargo> atualizarCargo = formFactory.form(Cargo.class).bindFromRequest();
 
-        if (atualizarCargo.hasErrors()) {
-            return badRequest(atualizarCargo.errorsAsJson());
+        Form<Cargo> form = formFactory.form(Cargo.class).bindFromRequest();
+
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
 
-        cargo.setNome(atualizarCargo.get().getNome());
-        cargo.save();
+        cargo = Cargo.update(id, form.get());
 
         return ok(play.libs.Json.toJson(cargo));
     }
@@ -74,7 +75,7 @@ public class CargoController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Cargo cargo = Cargo.find.byId(id);
         if (cargo != null) {
-            cargo.delete();
+            Cargo.delete(id);
             return ok("Cargo apagado com Sucesso!");
         }
         return notFound();

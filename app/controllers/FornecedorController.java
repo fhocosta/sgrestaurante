@@ -3,7 +3,6 @@ package controllers;
 import models.Fornecedor;
 import play.data.Form;
 import play.data.FormFactory;
-import play.db.ebean.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -18,30 +17,33 @@ public class FornecedorController extends Controller implements RestMethods {
     @Inject
     FormFactory formFactory;
 
+    @Override
     public Result list() {
         List<Fornecedor> fornecedores = Fornecedor.find.all();
         if (fornecedores.size() != 0) {
             return ok(play.libs.Json.toJson(fornecedores));
         }
         return noContent();
-
     }
 
+    @Override
     public Result create() {
         return ok(views.html.Fornecedor.create.render(formFactory.form(Fornecedor.class)));
     }
 
-    @Transactional
+    @Override
     public Result save() {
-        Form<Fornecedor> fornecedor = formFactory.form(Fornecedor.class).bindFromRequest();
-        if (fornecedor.hasErrors()) {
-            return badRequest(fornecedor.errorsAsJson());
+        Form<Fornecedor> form = formFactory.form(Fornecedor.class).bindFromRequest();
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
-        Fornecedor novoFornecedor = fornecedor.get();
-        novoFornecedor.save();
-        return ok(play.libs.Json.toJson(novoFornecedor));
+
+        Fornecedor fornecedor = Fornecedor.create(form.get());
+
+        return ok(play.libs.Json.toJson(fornecedor));
     }
 
+    @Override
     public Result edit(Long id) {
         Fornecedor fornecedor = Fornecedor.find.byId(id);
         if (fornecedor != null) {
@@ -50,32 +52,29 @@ public class FornecedorController extends Controller implements RestMethods {
         return notFound();
     }
 
-    @Transactional
+    @Override
     public Result update(Long id) {
         Fornecedor fornecedor = Fornecedor.find.byId(id);
         if (fornecedor == null) {
             return notFound();
         }
-        Form<Fornecedor> atualizarFornecedor = formFactory.form(Fornecedor.class).bindFromRequest();
 
-        if (atualizarFornecedor.hasErrors()) {
-            return badRequest(atualizarFornecedor.errorsAsJson());
+        Form<Fornecedor> form = formFactory.form(Fornecedor.class).bindFromRequest();
+
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
 
-        fornecedor.setNome(atualizarFornecedor.get().getNome());
-        fornecedor.setCnpj(atualizarFornecedor.get().getCnpj());
-        fornecedor.setEndereco(atualizarFornecedor.get().getEndereco());
-        fornecedor.setTelefone(atualizarFornecedor.get().getTelefone());
-        fornecedor.save();
+        fornecedor = Fornecedor.update(id, form.get());
 
         return ok(play.libs.Json.toJson(fornecedor));
     }
 
-    @Transactional
+    @Override
     public Result delete(Long id) {
         Fornecedor fornecedor = Fornecedor.find.byId(id);
         if (fornecedor != null) {
-            fornecedor.delete();
+            Fornecedor.delete(id);
             return ok("Fornecedor apagado com Sucesso!");
         }
         return notFound();

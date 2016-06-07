@@ -3,7 +3,6 @@ package controllers;
 import models.Cliente;
 import play.data.Form;
 import play.data.FormFactory;
-import play.db.ebean.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -15,35 +14,37 @@ import javax.inject.Inject;
  * Created by fhocosta on 31/05/16.
  */
 
-public class ClienteController extends Controller {
+public class ClienteController extends Controller implements RestMethods {
 
     @Inject
     FormFactory formFactory;
 
+    @Override
     public Result list() {
-        List<Cliente> clientes = Cliente.find.all();
+        List<Cliente> clientes = Cliente.all();
         if (clientes.size() != 0) {
             return ok(play.libs.Json.toJson(clientes));
-        } else {
-            return noContent();
         }
+        return noContent();
     }
 
+    @Override
     public Result create() {
         return ok(views.html.Clientes.create.render(formFactory.form(Cliente.class)));
     }
 
-    @Transactional
+    @Override
     public Result save() {
-        Form<Cliente> cliente = formFactory.form(Cliente.class).bindFromRequest();
-        if (cliente.hasErrors()) {
-            return badRequest(cliente.errorsAsJson());
+        Form<Cliente> form = formFactory.form(Cliente.class).bindFromRequest();
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
-        Cliente novoCliente = cliente.get();
-        novoCliente.save();
-        return ok(play.libs.Json.toJson(novoCliente));
-    }
 
+        Cliente cliente = Cliente.create(form.get());
+
+        return ok(play.libs.Json.toJson(cliente));
+    }
+    @Override
     public Result edit(Long id) {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente != null) {
@@ -52,33 +53,29 @@ public class ClienteController extends Controller {
         return notFound();
     }
 
-    @Transactional
+    @Override
     public Result update(Long id) {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente == null) {
             return notFound();
         }
-        Form<Cliente> atualizarCliente = formFactory.form(Cliente.class).bindFromRequest();
 
-        if (atualizarCliente.hasErrors()) {
-            return badRequest(atualizarCliente.errorsAsJson());
+        Form<Cliente> form = formFactory.form(Cliente.class).bindFromRequest();
+
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
         }
 
-        cliente.setNome(atualizarCliente.get().getNome());
-        cliente.setEmail(atualizarCliente.get().getEmail());
-        cliente.setTelefone(atualizarCliente.get().getTelefone());
-        cliente.setCpf(atualizarCliente.get().getCpf());
-        cliente.setEndereco(atualizarCliente.get().getTelefone());
-        cliente.save();
+        cliente = Cliente.update(id, form.get());
 
         return ok(play.libs.Json.toJson(cliente));
     }
 
-    @Transactional
+    @Override
     public Result delete(Long id) {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente != null) {
-            cliente.delete();
+            Cliente.delete(id);
             return ok("Cliente apagado com Sucesso!");
         }
         return notFound();

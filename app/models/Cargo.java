@@ -3,6 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,15 +17,38 @@ public class Cargo extends Model {
     private long id;
     @Column(name="nome")
     private String nome;
+    @OneToMany
+    private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 
     public Cargo() {
+    }
+
+    public static Finder<Long, Cargo> find = new Finder<Long, Cargo>(Cargo.class);
+
+    public static List<Cargo> all(){
+        return find.all();
+    }
+
+    public static Cargo create(Cargo cargo){
+        cargo.save();
+        return cargo;
+    }
+
+    public static Cargo update(Long id, Cargo c){
+        Cargo cargo = find.byId(id);
+
+        if(c.getNome() != null) cargo.setNome(c.getNome());
+
+        return create(cargo);
+    }
+
+    public static void delete(Long id){
+        find.ref(id).delete();
     }
 
     public Cargo(String nome) {
         this.nome = nome;
     }
-
-    public static Finder<Long, Cargo> find = new Finder<Long, Cargo>(Cargo.class);
 
     public Long getId() {
         return id;

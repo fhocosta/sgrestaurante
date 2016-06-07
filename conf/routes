@@ -2,34 +2,66 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+##### Cardapios #####
+
+# Listar Cardapios
+    GET     /cardapios/all                              controllers.CardapioController.list()
+
+# Adicionar Cardapio
+    GET     /cardapios/new                              controllers.CardapioController.create()
+    POST    /cardapios                                  controllers.CardapioController.save()
+
+# Editar Cardapios Existentes
+    GET     /cardapios/:id                              controllers.CardapioController.edit(id: Long)
+    POST    /cardapios/:id                              controllers.CardapioController.update(id: Long)
+
+# Apagar um Cardapio
+    POST    /cardapios/:id/delete                       controllers.CardapioController.delete(id :Long)
+
+##### Cargos #####
+
+# Listar Cargos
+    GET     /cargos/all                                 controllers.CargoController.list()
+
+# Adicionar Cargo
+    GET     /cargos/new                                 controllers.CargoController.create()
+    POST    /cargos                                     controllers.CargoController.save()
+
+# Editar Cargos Existentes
+    GET     /cargos/:id                                 controllers.CargoController.edit(id: Long)
+    POST    /cargos/:id                                 controllers.CargoController.update(id: Long)
+
+# Apagar um Cargo
+    POST    /cargos/:id/delete                          controllers.CargoController.delete(id :Long)
+
 ##### Clientes #####
 
 # Listar Clientes
-GET     /clientes/all                       controllers.ClienteController.list()
+    GET     /clientes/all                               controllers.ClienteController.list()
 
 # Adicionar Cliente
-GET     /clientes/new                       controllers.ClienteController.create()
-POST    /clientes                           controllers.ClienteController.save()
+    GET     /clientes/new                               controllers.ClienteController.create()
+    POST    /clientes                                   controllers.ClienteController.save()
 
 # Editar Clientes Existentes
-GET     /clientes/:id                       controllers.ClienteController.edit(id: Long)
-POST    /clientes/:id                       controllers.ClienteController.update(id: Long)
+    GET     /clientes/:id                               controllers.ClienteController.edit(id: Long)
+    POST    /clientes/:id                               controllers.ClienteController.update(id: Long)
 
 # Apagar um Cliente
-POST    /clientes/:id/delete                controllers.ClienteController.delete(id :Long)
+    POST    /clientes/:id/delete                        controllers.ClienteController.delete(id :Long)
 
 ##### Fornecedores #####
 
 # Listar Fornecedores
-GET     /fornecedores/all                   controllers.FornecedorController.list()
+    GET     /fornecedores/all                           controllers.FornecedorController.list()
 
 # Adicionar Fornecedor
-GET     /fornecedores/new                   controllers.FornecedorController.create()
-POST    /fornecedores                       controllers.FornecedorController.save()
+    GET     /fornecedores/new                           controllers.FornecedorController.create()
+    POST    /fornecedores                               controllers.FornecedorController.save()
 
 # Editar Fornecedores Existentes
-GET     /fornecedores/:id                   controllers.FornecedorController.edit(id: Long)
-POST    /fornecedores/:id                   controllers.FornecedorController.update(id: Long)
+    GET     /fornecedores/:id                           controllers.FornecedorController.edit(id: Long)
+    POST    /fornecedores/:id                           controllers.FornecedorController.update(id: Long)
 
 # Apagar um Fornecedor
-POST    /fornecedores/:id/delete            controllers.FornecedorController.delete(id :Long)
+    POST    /fornecedores/:id/delete                    controllers.FornecedorController.delete(id :Long)
