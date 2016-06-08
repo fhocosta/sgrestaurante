@@ -1,0 +1,27 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html class="no-js" lang="pt">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>@title</title>
+        <link rel="stylesheet" href="assets/stylesheets/foundation/foundation.min.css"/>
+    </head>
+    <body>
+
+        <div>
+            @content
+        </div>
+
+        <script src="assets/javascripts/foundation/vendor/jquery.js"></script>
+        <script src="assets/javascripts/foundation/vendor/what-input.js"></script>
+        <script src="assets/javascripts/foundation/vendor/foundation.min.js"></script>
+        <script>
+              $(document).foundation();
+
+        </script>
+
+    </body>
+</html>
