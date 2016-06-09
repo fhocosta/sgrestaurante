@@ -9,6 +9,6 @@ import play.mvc.Result;
 public class HomeController extends Controller {
 
     public Result index(){
-        return ok(views.html.main.render("SG Restaurante"));
+        return ok(views.html.main.render("SG Restaurante", views.html.Home.index.render()));
     }
 }

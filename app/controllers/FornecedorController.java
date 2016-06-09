@@ -19,7 +19,7 @@ public class FornecedorController extends Controller implements RestMethods {
 
     @Override
     public Result list() {
-        List<Fornecedor> fornecedores = Fornecedor.find.all();
+        List<Fornecedor> fornecedores = Fornecedor.all();
         if (fornecedores.size() != 0) {
             return ok(play.libs.Json.toJson(fornecedores));
         }
@@ -28,7 +28,7 @@ public class FornecedorController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        return ok(views.html.Fornecedor.create.render(formFactory.form(Fornecedor.class)));
+        return ok(views.html.main.render("SG Restaurante - Funcionários", views.html.Fornecedor.create.render(formFactory.form(Fornecedor.class))));
     }
 
     @Override

@@ -15,8 +15,8 @@ import java.util.List;
 @DiscriminatorValue("C")
 public class Cliente extends Usuario {
 
-    @Id
-    private long id;
+//    @Id
+//    private long id;
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
     @Column(name = "receber_marketing")

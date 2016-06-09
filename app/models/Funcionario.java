@@ -13,8 +13,8 @@ import java.util.List;
 @DiscriminatorValue("F")
 public class Funcionario extends Usuario {
 
-    @Id
-    private long id;
+//    @Id
+//    private long id;
     @ManyToOne
     private Cargo cargo;
     @OneToOne(cascade = CascadeType.ALL)

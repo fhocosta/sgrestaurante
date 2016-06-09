@@ -1,12 +1,50 @@
 @(form: Form[Fornecedor])
 
-<h1>Criar novo Cliente!</h1>
-<form action="/fornecedores" method="post">
-    <input type="text" name="nome" placeholder="Digite o Nome do Fornecedor">
-    <input type="text" name="cnpj" placeholder="Digite o CNPJ do Fornecedor">
-    <input type="text" name="endereco" placeholder="Digite o endereco do Fornecedor">
-    <input type="text" name="telefone" placeholder="Digite o telefone do Fornecedor">
-    <button type="submit">Salvar</button>
-    <button type="reset">Limpar</button>
-</form>
+<div class="row">
+    <div class="large-12 columns">
+        <fieldset>
+            <legend>Cadastrar Fornecedor</legend>
+            <form action="/fornecedores" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="nome" class="text-right">NOME</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="nome" name="nome" placeholder="Digite o Nome do Fornecedor">
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="cnpj" class="text-right">CNPJ</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ do Fornecedor">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="endereco" class="text-right">ENDEREÇO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="endereco" name="endereco" placeholder="Digite o Endereço do Fornecedor">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="telefone" class="text-right">ENDEREÇO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="telefone" name="telefone" placeholder="Digite o Telefone do Fornecedor">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-10 columns end float-right">
+                        <button type="reset" class="button secondary">Limpar</button>
+                        <button type="submit" class="button primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

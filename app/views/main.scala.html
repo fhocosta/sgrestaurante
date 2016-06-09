@@ -2,26 +2,47 @@
 
 <!DOCTYPE html>
 <html class="no-js" lang="pt">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>@title</title>
-        <link rel="stylesheet" href="assets/stylesheets/foundation/foundation.min.css"/>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@title</title>
+    <link rel="stylesheet" href="/assets/stylesheets/foundation/foundation.min.css"/>
+</head>
+<body>
 
-        <div>
-            @content
-        </div>
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">SG Restaurante</li>
+            <li>
+                <a>Cadastrar</a>
+                <ul class="menu vertical">
+                    <li><a href="/fornecedores/new">Fornecedor</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="#">Two</a></li>-->
+            <!--<li><a href="#">Three</a></li>-->
+        </ul>
+    </div>
+    <!--<div class="top-bar-right">-->
+        <!--<ul class="menu">-->
+            <!--<li><input type="search" placeholder="Search"></li>-->
+            <!--<li>-->
+                <!--<button type="button" class="button">Search</button>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>
 
-        <script src="assets/javascripts/foundation/vendor/jquery.js"></script>
-        <script src="assets/javascripts/foundation/vendor/what-input.js"></script>
-        <script src="assets/javascripts/foundation/vendor/foundation.min.js"></script>
-        <script>
-              $(document).foundation();
+<div>
+    @content
+</div>
 
-        </script>
+<script src="/assets/javascripts/foundation/vendor/jquery.js"></script>
+<script src="/assets/javascripts/foundation/vendor/what-input.js"></script>
+<script src="/assets/javascripts/foundation/vendor/foundation.min.js"></script>
+<script>$(document).foundation();</script>
 
-    </body>
+</body>
 </html>
