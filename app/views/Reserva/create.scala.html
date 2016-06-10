@@ -1,0 +1,93 @@
+@(clientes: List[Cliente], funcionarios: List[Funcionario], mesas: List[Mesa])
+<div class="row">
+    <div class="large-12-columns">
+        <fieldset>
+            <legend>Cadastrar Cliente</legend>
+            <form action="/reservas" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="quantidadeConvidados" class="text-right">QTDE. CONVIDADOS</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="quantidadeConvidados" name="quantidadeConvidados" placeholder="Ex.: 10" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="mesa" class="text-right">MESA</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="mesa" id="mesa" required="required">
+                            <option value="">Selecione a Mesa</option>
+                            @for(mesa <- mesas){
+                            <option value="@mesa.getId()">@mesa.getNumero() (@mesa.getLugares() Lugares)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="data" class="text-right">DATA</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="date" id="data" name="data" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="cliente" class="text-right">CLIENTE</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="cliente" id="cliente" required="required">
+                            <option value="">Selecione o Cliente</option>
+                            @for(cliente <- clientes){
+                            <option value="@cliente.getId()">@cliente.getNome()</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="atendente" class="text-right">FUNCIONÁRIO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="atendente" id="atendente" required="required">
+                            <option value="">Selecione o Funcionário</option>
+                            @for(funcionario <- funcionarios){
+                            <option value="@funcionario.getId()">@funcionario.getNome()</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="observacao" class="text-right">DESCRIÇÃO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <textarea name="observacao" id="observacao" cols="30" rows="10" placeholder="Ex.: Aniversário do João!!" required="required"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

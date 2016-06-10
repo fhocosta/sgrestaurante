@@ -1,5 +1,8 @@
 package controllers;
 
+import models.Cliente;
+import models.Funcionario;
+import models.Mesa;
 import models.Reserva;
 import play.data.Form;
 import play.data.FormFactory;
@@ -28,18 +31,17 @@ public class ReservaController extends Controller implements RestMethods{
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Reserva
-        return null;
+        return ok(views.html.main.render(views.html.Reserva.create.render(Cliente.all(), Funcionario.all(), Mesa.all())));
     }
 
     @Override
     public Result save() {
         Form<Reserva> form = formFactory.form(Reserva.class).bindFromRequest();
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        Reserva reserva = Reserva.create(form.get());
+        Reserva reserva = Reserva.create(form.data());
 
         return ok(play.libs.Json.toJson(reserva));
     }

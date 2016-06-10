@@ -18,9 +18,8 @@ public class Cliente extends Usuario {
     @Column(name = "receber_marketing")
     private boolean receberMarketing;
     @OneToMany
-    private List<Reserva> reservas = new ArrayList<Reserva>();
-    @OneToMany
     private List<Comanda> comandas = new ArrayList<Comanda>();
+
 
     public Cliente() {
     }
@@ -53,14 +52,6 @@ public class Cliente extends Usuario {
 
     public void setReceberMarketing(boolean receberMarketing) {
         this.receberMarketing = receberMarketing;
-    }
-
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
     }
 
     public List<Comanda> getComandas() {

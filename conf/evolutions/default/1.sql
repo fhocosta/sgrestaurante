@@ -103,7 +103,6 @@ create table tbl_reserva (
   data                          datetime(6),
   observacao                    varchar(255),
   quantidade_convidados         integer,
-  constraint uq_tbl_reserva_cliente_id unique (cliente_id),
   constraint pk_tbl_reserva primary key (id)
 );
 
@@ -185,6 +184,7 @@ alter table tbl_produto_tbl_pedido add constraint fk_tbl_produto_tbl_pedido_tbl_
 create index ix_tbl_produto_tbl_pedido_tbl_pedido on tbl_produto_tbl_pedido (tbl_pedido_id);
 
 alter table tbl_reserva add constraint fk_tbl_reserva_cliente_id foreign key (cliente_id) references tbl_usuario (id) on delete restrict on update restrict;
+create index ix_tbl_reserva_cliente_id on tbl_reserva (cliente_id);
 
 alter table tbl_reserva add constraint fk_tbl_reserva_atendente_id foreign key (atendente_id) references tbl_usuario (id) on delete restrict on update restrict;
 create index ix_tbl_reserva_atendente_id on tbl_reserva (atendente_id);
@@ -247,6 +247,7 @@ alter table tbl_produto_tbl_pedido drop foreign key fk_tbl_produto_tbl_pedido_tb
 drop index ix_tbl_produto_tbl_pedido_tbl_pedido on tbl_produto_tbl_pedido;
 
 alter table tbl_reserva drop foreign key fk_tbl_reserva_cliente_id;
+drop index ix_tbl_reserva_cliente_id on tbl_reserva;
 
 alter table tbl_reserva drop foreign key fk_tbl_reserva_atendente_id;
 drop index ix_tbl_reserva_atendente_id on tbl_reserva;
