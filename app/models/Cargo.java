@@ -1,10 +1,12 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.text.StringFormatter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fhocosta on 31/05/16.

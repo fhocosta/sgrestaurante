@@ -15,10 +15,6 @@ import java.util.List;
 @DiscriminatorValue("C")
 public class Cliente extends Usuario {
 
-//    @Id
-//    private long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Usuario usuario;
     @Column(name = "receber_marketing")
     private boolean receberMarketing;
     @OneToMany
@@ -41,8 +37,8 @@ public class Cliente extends Usuario {
     }
 
     public static Cliente update(Long id, Cliente c) {
-        Usuario.update(c.getUsuario().getId(), c);
         Cliente cliente = find.byId(id);
+        Usuario.update(cliente.getId(), c);
         if (c.isReceberMarketing()) cliente.setReceberMarketing(c.isReceberMarketing());
         return create(cliente);
     }
@@ -75,11 +71,4 @@ public class Cliente extends Usuario {
         this.comandas = comandas;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

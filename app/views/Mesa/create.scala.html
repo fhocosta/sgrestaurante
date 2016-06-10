@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="large-12 columns">
+        <fieldset>
+            <legend>Cadastrar Mesa</legend>
+            <form action="/mesas" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="numero" class="text-right">NÚMERO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="numero" name="numero" placeholder="Ex.: 1" required="required">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="lugares" class="text-right">LUGARES</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="lugares" name="lugares" placeholder="Ex.: 12" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

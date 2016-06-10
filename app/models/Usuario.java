@@ -32,9 +32,6 @@ public class Usuario extends Model {
     @Column(name = "telefone")
     private String telefone;
 
-    @OneToMany
-    private List<Sugestao> sugestoes = new ArrayList<Sugestao>();
-
     public Usuario() {
     }
 
@@ -125,4 +122,5 @@ public class Usuario extends Model {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
 }

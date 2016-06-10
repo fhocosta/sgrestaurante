@@ -4,6 +4,7 @@ import com.avaje.ebean.Model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fhocosta on 06/06/16.
@@ -21,6 +22,7 @@ public class Sugestao extends Model {
     @ManyToOne
     private Usuario usuario;
 
+
     public Sugestao() {
     }
 
@@ -28,6 +30,28 @@ public class Sugestao extends Model {
 
     public static List<Sugestao> all() {
         return find.all();
+    }
+
+    public static Sugestao create(Map<String, String> form) {
+        Sugestao sugestao = new Sugestao();
+        if(form.get("titulo") != null){
+            sugestao.setTitulo(form.get("titulo"));
+        }
+        if(form.get("descricao") != null){
+            sugestao.setDescricao(form.get("descricao"));
+        }
+
+        if(form.get("usuario") != null && !form.get("usuario").isEmpty()){
+            Long id = Long.parseLong(form.get("usuario"));
+            Usuario usuario = Usuario.find.byId(id);
+            if (usuario != null){
+                sugestao.setUsuario(usuario);
+            }
+        }
+
+        return create(sugestao);
+
+
     }
 
     public static Sugestao create(Sugestao sugestao) {
@@ -80,4 +104,5 @@ public class Sugestao extends Model {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
 }

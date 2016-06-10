@@ -1,6 +1,9 @@
 package controllers;
 
+import models.Cliente;
+import models.Funcionario;
 import models.Sugestao;
+import models.Usuario;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -28,18 +31,17 @@ public class SugestaoController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Sugestao
-        return null;
+        return ok(views.html.main.render(views.html.Sugestao.create.render(Usuario.find.all())));
     }
 
     @Override
     public Result save() {
         Form<Sugestao> form = formFactory.form(Sugestao.class).bindFromRequest();
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+//        if (form.hasErrors()) {
+//            return badRequest(form.errorsAsJson());
+//        }
 
-        Sugestao sugestao = Sugestao.create(form.get());
+        Sugestao sugestao = Sugestao.create(form.data());
 
         return ok(play.libs.Json.toJson(sugestao));
     }

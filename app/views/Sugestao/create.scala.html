@@ -1,0 +1,56 @@
+@(usuarios: List[Usuario])
+
+<div class="row">
+    <div class="large-12-columns">
+        <fieldset>
+            <legend>Cadastrar Sugestão</legend>
+            <form action="/sugestoes" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="titulo" class="text-right">TÍTULO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex.: Muito bom! Recomento!" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="descricao" class="text-right">DESCRIÇÃO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Ex.: Adorei o X-Salada!" required="required"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="usuario" class="text-right">FUNCIONÁRIO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="usuario" id="usuario" required="required">
+                            <option value="">Selecione o Usuário</option>
+                            @for(usuario <- usuarios){
+                            <option value="@usuario.getId()">@usuario.getNome()</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

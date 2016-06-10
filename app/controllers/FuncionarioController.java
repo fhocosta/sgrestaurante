@@ -1,5 +1,7 @@
 package controllers;
 
+import com.avaje.ebeaninternal.server.lib.util.Str;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import models.Cargo;
 import models.Funcionario;
@@ -9,6 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fhocosta on 31/05/16.
@@ -39,7 +42,7 @@ public class FuncionarioController extends Controller implements RestMethods {
             return badRequest(form.errorsAsJson());
         }
 
-        Funcionario funcionario = Funcionario.create(form.get());
+        Funcionario funcionario = Funcionario.create(form.data());
 
         return ok(play.libs.Json.toJson(funcionario));
     }

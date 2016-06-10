@@ -28,8 +28,7 @@ public class MesaController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Mesa
-        return null;
+        return ok(views.html.main.render(views.html.Mesa.create.render()));
     }
 
     @Override

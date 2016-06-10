@@ -61,7 +61,7 @@
                         <select name="cargo" id="cargo" required="required">
                             <option value="">Selecione o Cargo</option>
                             @for(cargo <- cargos){
-                                <option value="@cargo">@cargo.getNome()</option>
+                                <option value="@cargo.getId()">@cargo.getNome()</option>
                             }
                         </select>
                     </div>
@@ -97,11 +97,6 @@
                     </div>
                     <div class="small-6 columns end">
                         <input type="text" id="telefone" name="telefone" placeholder="(92) 9123-4567">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-6 large-offset-2 columns end">
-                        <input id="receberMarketing" name="receberMarketing" type="checkbox"><label for="receberMarketing">Deseja receber nossas promoções?</label>
                     </div>
                 </div>
 
