@@ -3,9 +3,10 @@ package models;
 import com.avaje.ebean.Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by fhocosta on 06/06/16.
@@ -33,6 +34,36 @@ public class Cortesia extends Model {
 
     public static List<Cortesia> all() {
         return find.all();
+    }
+
+    public static Cortesia create(Map<String, String> form) {
+        Cortesia cortesia = new Cortesia();
+
+        if(form.get("produto") != null){
+            Long id = Long.parseLong(form.get("produto"));
+            Produto produto = Produto.find.byId(id);
+            if(produto != null){
+                cortesia.setProduto(produto);
+            }
+        }
+
+        if(form.get("quantidade") != null){
+            cortesia.setQuantidade(Integer.parseInt(form.get("quantidade")));
+        }
+
+        if(form.get("disponibilidade") != null){
+            String string = form.get("disponibilidade");
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = null;
+            try {
+                date = formatter.parse(string);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (date != null) cortesia.setDisponibilidade(date);
+        }
+
+        return create(cortesia);
     }
 
     public static Cortesia create(Cortesia cortesia) {
@@ -79,19 +110,19 @@ public class Cortesia extends Model {
         this.disponibilidade = disponibilidade;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public List<Comanda> getComandas() {
         return comandas;
     }
 
     public void setComandas(List<Comanda> comandas) {
         this.comandas = comandas;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }

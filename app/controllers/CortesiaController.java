@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Cortesia;
+import models.Produto;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -28,18 +29,17 @@ public class CortesiaController extends Controller implements RestMethods{
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Cortesia
-        return null;
+        return ok(views.html.main.render(views.html.Cortesia.create.render(Produto.all())));
     }
 
     @Override
     public Result save() {
         Form<Cortesia> form = formFactory.form(Cortesia.class).bindFromRequest();
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        Cortesia cortesia = Cortesia.create(form.get());
+        Cortesia cortesia = Cortesia.create(form.data());
 
         return ok(play.libs.Json.toJson(cortesia));
     }

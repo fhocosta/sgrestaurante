@@ -132,9 +132,7 @@ create table tbl_usuario (
   endereco                      varchar(255),
   telefone                      varchar(255),
   cargo_id                      bigint,
-  usuario_id                    bigint,
   receber_marketing             tinyint(1) default 0,
-  constraint uq_tbl_usuario_usuario_id unique (usuario_id),
   constraint pk_tbl_usuario primary key (id)
 );
 
@@ -197,8 +195,6 @@ create index ix_tbl_sugestao_usuario_id on tbl_sugestao (usuario_id);
 alter table tbl_usuario add constraint fk_tbl_usuario_cargo_id foreign key (cargo_id) references tbl_cargo (id) on delete restrict on update restrict;
 create index ix_tbl_usuario_cargo_id on tbl_usuario (cargo_id);
 
-alter table tbl_usuario add constraint fk_tbl_usuario_usuario_id foreign key (usuario_id) references tbl_usuario (id) on delete restrict on update restrict;
-
 
 # --- !Downs
 
@@ -260,8 +256,6 @@ drop index ix_tbl_sugestao_usuario_id on tbl_sugestao;
 
 alter table tbl_usuario drop foreign key fk_tbl_usuario_cargo_id;
 drop index ix_tbl_usuario_cargo_id on tbl_usuario;
-
-alter table tbl_usuario drop foreign key fk_tbl_usuario_usuario_id;
 
 drop table if exists tbl_cardapio;
 

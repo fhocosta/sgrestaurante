@@ -37,9 +37,9 @@ public class SugestaoController extends Controller implements RestMethods {
     @Override
     public Result save() {
         Form<Sugestao> form = formFactory.form(Sugestao.class).bindFromRequest();
-//        if (form.hasErrors()) {
-//            return badRequest(form.errorsAsJson());
-//        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
         Sugestao sugestao = Sugestao.create(form.data());
 

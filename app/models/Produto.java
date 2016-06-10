@@ -27,8 +27,6 @@ public class Produto extends Model {
     private List<Cardapio> cardapios = new ArrayList<Cardapio>();
     @ManyToMany
     private List<Pedido> pedidos = new ArrayList<Pedido>();
-    @OneToMany
-    private List<Cortesia> cortesias = new ArrayList<Cortesia>();
 
     public Produto() {
     }
@@ -116,11 +114,4 @@ public class Produto extends Model {
         this.pedidos = pedidos;
     }
 
-    public List<Cortesia> getCortesias() {
-        return cortesias;
-    }
-
-    public void setCortesias(List<Cortesia> cortesias) {
-        this.cortesias = cortesias;
-    }
 }
