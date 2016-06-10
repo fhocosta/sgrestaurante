@@ -7,6 +7,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import com.google.inject.Inject;
+
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class FornecedorController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        return ok(views.html.main.render("SG Restaurante - Funcionários", views.html.Fornecedor.create.render(formFactory.form(Fornecedor.class))));
+        return ok(views.html.main.render(views.html.Fornecedor.create.render()));
     }
 
     @Override

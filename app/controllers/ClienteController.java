@@ -30,7 +30,7 @@ public class ClienteController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        return ok(views.html.Clientes.create.render(formFactory.form(Cliente.class)));
+        return ok(views.html.main.render(views.html.Cliente.create.render()));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.inject.Inject;
+import models.Cargo;
 import models.Funcionario;
 import play.data.Form;
 import play.data.FormFactory;
@@ -28,8 +29,7 @@ public class FuncionarioController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario para novo funcionario
-        return null;
+        return ok(views.html.main.render(views.html.Funcionario.create.render(Cargo.all())));
     }
 
     @Override

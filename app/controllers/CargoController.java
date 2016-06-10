@@ -28,8 +28,7 @@ public class CargoController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Cargo
-        return null;
+        return ok(views.html.main.render(views.html.Cargo.create.render()));
     }
 
     @Override

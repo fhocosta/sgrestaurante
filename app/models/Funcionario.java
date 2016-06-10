@@ -15,7 +15,7 @@ public class Funcionario extends Usuario {
 
 //    @Id
 //    private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cargo cargo;
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;

@@ -28,8 +28,7 @@ public class ProdutoController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Produto
-        return null;
+        return ok(views.html.main.render(views.html.Produto.create.render()));
     }
 
     @Override
