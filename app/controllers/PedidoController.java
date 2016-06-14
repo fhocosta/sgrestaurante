@@ -1,6 +1,9 @@
 package controllers;
 
+import models.Comanda;
 import models.Pedido;
+import models.Produto;
+import models.Status;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -28,18 +31,17 @@ public class PedidoController extends Controller implements RestMethods{
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Pedido
-        return null;
+        return ok(views.html.main.render(views.html.Pedido.create.render(Status.all(), Produto.all(), Comanda.all())));
     }
 
     @Override
     public Result save() {
         Form<Pedido> form = formFactory.form(Pedido.class).bindFromRequest();
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        Pedido pedido = Pedido.create(form.get());
+        Pedido pedido = Pedido.create(form.data());
 
         return ok(play.libs.Json.toJson(pedido));
     }
@@ -66,7 +68,7 @@ public class PedidoController extends Controller implements RestMethods{
             return badRequest(form.errorsAsJson());
         }
 
-        pedido = Pedido.update(id, form.get());
+        pedido = Pedido.update(id, form.data());
 
         return ok(play.libs.Json.toJson(pedido));
     }

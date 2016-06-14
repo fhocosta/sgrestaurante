@@ -64,11 +64,11 @@ public class SugestaoController extends Controller implements RestMethods {
 
         Form<Sugestao> form = formFactory.form(Sugestao.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        sugestao = Sugestao.update(id, form.get());
+        sugestao = Sugestao.update(id, form.data());
 
         return ok(play.libs.Json.toJson(sugestao));
     }

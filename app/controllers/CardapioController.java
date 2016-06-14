@@ -2,6 +2,7 @@ package controllers;
 
 import com.google.inject.Inject;
 import models.Cardapio;
+import models.Produto;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -29,8 +30,7 @@ public class CardapioController extends Controller implements RestMethods{
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Cardapios
-        return null;
+        return ok(views.html.main.render(views.html.Cardapio.create.render(Produto.all())));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CardapioController extends Controller implements RestMethods{
             return badRequest(form.errorsAsJson());
         }
 
-        Cardapio cardapio = Cardapio.create(form.get());
+        Cardapio cardapio = Cardapio.create(form.data());
 
         return ok(play.libs.Json.toJson(cardapio));
     }

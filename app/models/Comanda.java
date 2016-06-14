@@ -3,9 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by fhocosta on 06/06/16.
@@ -32,13 +30,61 @@ public class Comanda extends Model {
     private Mesa mesa;
     @ManyToOne
     private Cortesia cortesia;
-    @OneToMany
-    private List<Pedido> pedidos = new ArrayList<Pedido>();
 
     public static Finder<Long, Comanda> find = new Finder<Long, Comanda>(Comanda.class);
 
     public static List<Comanda> all() {
         return find.all();
+    }
+
+    public static Comanda create(Map<String, String> form) {
+        Comanda comanda = new Comanda();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date dataAbertura = calendar.getTime();
+
+        if(dataAbertura != null){
+            comanda.setDataAbertura(dataAbertura);
+        }
+
+        comanda.setAberta(true);
+
+        if(form.get("atendente") != null){
+            Long id  = Long.parseLong(form.get("atendente"));
+            Funcionario atendente = Funcionario.find.byId(id);
+            if (atendente != null){
+                comanda.setAtendente(atendente);
+            }
+        }
+
+        if(form.get("cliente") != null){
+            Long id  = Long.parseLong(form.get("cliente"));
+            Cliente cliente = Cliente.find.byId(id);
+            if (cliente != null){
+                comanda.setCliente(cliente);
+            }
+        }
+
+        if(form.get("mesa") != null){
+            Long id  = Long.parseLong(form.get("mesa"));
+            Mesa mesa = Mesa.find.byId(id);
+            if (mesa != null){
+                comanda.setMesa(mesa);
+            }
+        }
+
+        if(form.get("cortesia") != null){
+            Long id  = Long.parseLong(form.get("cortesia"));
+            Cortesia cortesia = Cortesia.find.byId(id);
+            if (cortesia != null){
+                cortesia.setQuantidade(cortesia.getQuantidade() - 1);
+                cortesia.save();
+                comanda.setCortesia(cortesia);
+            }
+        }
+
+        return create(comanda);
     }
 
     public static Comanda create(Comanda comanda) {
@@ -139,11 +185,4 @@ public class Comanda extends Model {
         this.cortesia = cortesia;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
 }

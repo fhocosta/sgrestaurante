@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="large-12 columns">
+        <fieldset>
+            <legend>Cadastrar Status</legend>
+            <form action="/status" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="descricao" class="text-right">DESCRIÇÃO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="descricao" name="descricao" placeholder="Ex.: Em Prepato" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

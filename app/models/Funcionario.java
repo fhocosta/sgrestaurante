@@ -19,8 +19,6 @@ public class Funcionario extends Usuario {
     @ManyToOne
     private Cargo cargo;
     @OneToMany
-    private List<Comanda> comandas = new ArrayList<Comanda>();
-    @OneToMany
     private List<Reserva> reservas = new ArrayList<Reserva>();
 
     public Funcionario() {

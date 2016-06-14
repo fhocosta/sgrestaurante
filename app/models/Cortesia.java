@@ -24,8 +24,6 @@ public class Cortesia extends Model {
     private Date disponibilidade;
     @ManyToOne
     private Produto produto;
-    @OneToMany
-    private List<Comanda> comandas = new ArrayList<Comanda>();
 
     public Cortesia() {
     }
@@ -108,14 +106,6 @@ public class Cortesia extends Model {
 
     public void setDisponibilidade(Date disponibilidade) {
         this.disponibilidade = disponibilidade;
-    }
-
-    public List<Comanda> getComandas() {
-        return comandas;
-    }
-
-    public void setComandas(List<Comanda> comandas) {
-        this.comandas = comandas;
     }
 
     public Produto getProduto() {

@@ -19,10 +19,6 @@ public class Mesa extends Model {
     private int numero;
     @Column(name = "lugares")
     private int lugares;
-    @OneToMany
-    private List<Comanda> comandas = new ArrayList<Comanda>();
-    @ManyToOne
-    private Reserva reserva;
 
     public Mesa() {
     }
@@ -43,7 +39,6 @@ public class Mesa extends Model {
 
         if (m.getNumero() != 0) mesa.setNumero(m.getNumero());
         if (m.getLugares() != 0) mesa.setLugares(m.getLugares());
-        if (m.getReserva() != null) mesa.setReserva(m.getReserva());
 
         return create(mesa);
 
@@ -77,19 +72,4 @@ public class Mesa extends Model {
         this.lugares = lugares;
     }
 
-    public List<Comanda> getComandas() {
-        return comandas;
-    }
-
-    public void setComandas(List<Comanda> comandas) {
-        this.comandas = comandas;
-    }
-
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-    }
 }

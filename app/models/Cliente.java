@@ -17,9 +17,6 @@ public class Cliente extends Usuario {
 
     @Column(name = "receber_marketing")
     private boolean receberMarketing;
-    @OneToMany
-    private List<Comanda> comandas = new ArrayList<Comanda>();
-
 
     public Cliente() {
     }
@@ -52,14 +49,6 @@ public class Cliente extends Usuario {
 
     public void setReceberMarketing(boolean receberMarketing) {
         this.receberMarketing = receberMarketing;
-    }
-
-    public List<Comanda> getComandas() {
-        return comandas;
-    }
-
-    public void setComandas(List<Comanda> comandas) {
-        this.comandas = comandas;
     }
 
 }

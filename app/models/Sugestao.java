@@ -59,12 +59,18 @@ public class Sugestao extends Model {
         return sugestao;
     }
 
-    public static Sugestao update(Long id, Sugestao s) {
+    public static Sugestao update(Long id, Map<String, String> form) {
         Sugestao sugestao = find.byId(id);
 
-        if (s.getTitulo() != null) sugestao.setTitulo(s.getTitulo());
-        if (s.getDescricao() != null) sugestao.setDescricao(s.getDescricao());
-        if (s.getUsuario() != null) sugestao.setUsuario(s.getUsuario());
+        if (form.get("titulo") != null) sugestao.setTitulo(form.get("titulo"));
+        if (form.get("descricao") != null) sugestao.setDescricao(form.get("descricao"));
+        if (form.get("usuario") != null) {
+            Long idUsuario = Long.parseLong(form.get("usuario"));
+            Usuario usuario = Usuario.find.byId(idUsuario);
+            if(usuario != null){
+                sugestao.setUsuario(usuario);
+            }
+        };
 
         return create(sugestao);
     }

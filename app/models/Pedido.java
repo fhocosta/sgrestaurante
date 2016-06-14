@@ -5,6 +5,7 @@ import com.avaje.ebean.Model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fhocosta on 06/06/16.
@@ -31,16 +32,92 @@ public class Pedido extends Model {
         return find.all();
     }
 
+    public static Pedido create(Map<String, String> form) {
+
+        Pedido pedido = new Pedido();
+
+        if(form.get("status") != null){
+            Long id = Long.parseLong(form.get("status"));
+            Status status = Status.find.byId(id);
+            if(status != null){
+                pedido.setStatus(status);
+            }
+        }
+
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        if(form.get("produto1") != null){
+            Long id = Long.parseLong(form.get("produto1"));
+            Produto produto = Produto.find.byId(id);
+            if(produto != null){
+                produtos.add(produto);
+            }
+        }
+
+        if(form.get("produto2") != null){
+            Long id = Long.parseLong(form.get("produto2"));
+            Produto produto = Produto.find.byId(id);
+            if(produto != null){
+                produtos.add(produto);
+            }
+        }
+
+        pedido.setProdutos(produtos);
+
+        if(form.get("comanda") != null){
+            Long id = Long.parseLong(form.get("comanda"));
+            Comanda comanda = Comanda.find.byId(id);
+            if(comanda != null){
+                pedido.setComanda(comanda);
+            }
+        }
+
+        return create(pedido);
+    }
+
     public static Pedido create(Pedido pedido) {
         pedido.save();
         return pedido;
     }
 
-    public static Pedido update(Long id, Pedido p) {
+    public static Pedido update(Long id, Map<String, String> form) {
         Pedido pedido = find.byId(id);
 
-        if (p.status != null) pedido.setStatus(p.getStatus());
-        if (p.getComanda() != null) pedido.setComanda(p.getComanda());
+        if(form.get("status") != null){
+            Long idStatus = Long.parseLong(form.get("idStatus"));
+            Status status = Status.find.byId(id);
+            if(status != null){
+                pedido.setStatus(status);
+            }
+        }
+
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        if(form.get("produto1") != null){
+            Long idProduto1 = Long.parseLong(form.get("produto1"));
+            Produto produto = Produto.find.byId(idProduto1);
+            if(produto != null){
+                produtos.add(produto);
+            }
+        }
+
+        if(form.get("produto2") != null){
+            Long idProduto2 = Long.parseLong(form.get("produto2"));
+            Produto produto = Produto.find.byId(idProduto2);
+            if(produto != null){
+                produtos.add(produto);
+            }
+        }
+
+        pedido.setProdutos(produtos);
+
+        if(form.get("comanda") != null){
+            Long idComanda = Long.parseLong(form.get("comanda"));
+            Comanda comanda = Comanda.find.byId(idComanda);
+            if(comanda != null){
+                pedido.setComanda(comanda);
+            }
+        }
 
         return create(pedido);
     }

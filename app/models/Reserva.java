@@ -30,8 +30,8 @@ public class Reserva extends Model {
     private String observacao;
     @Column(name = "quantidade_convidados")
     private int quantidadeConvidados;
-    @OneToMany
-    private List<Mesa> mesas = new ArrayList<Mesa>();
+    @ManyToOne
+    private Mesa mesa;
 
     public Reserva() {
     }
@@ -65,9 +65,7 @@ public class Reserva extends Model {
             Long id = Long.parseLong(form.get("mesa"));
             Mesa mesa = Mesa.find.byId(id);
             if(mesa != null){
-                List<Mesa> mesas = new ArrayList<Mesa>();
-                mesas.add(mesa);
-                reserva.setMesas(mesas);
+                reserva.setMesa(mesa);
             }
         }
 
@@ -99,15 +97,53 @@ public class Reserva extends Model {
         return reserva;
     }
 
-    public static Reserva update(Long id, Reserva r) {
+    public static Reserva update(Long id, Map<String, String> form) {
         Reserva reserva = find.byId(id);
 
-        if (r.getCliente() != null) reserva.setCliente(r.getCliente());
-        if (r.getAtendente() != null) reserva.setAtendente(r.getAtendente());
-        if (r.getData() != null) reserva.setData(r.getData());
-        if (r.getObservacao() != null) reserva.setObservacao(r.getObservacao());
-        if (r.getQuantidadeConvidados() != 0) reserva.setQuantidadeConvidados(r.getQuantidadeConvidados());
+        if(form.get("cliente") != null){
+            Long idCliente = Long.parseLong(form.get("cliente"));
+            Cliente cliente = Cliente.find.byId(idCliente);
+            if(cliente != null){
+                reserva.setCliente(cliente);
+            }
+        }
 
+        if(form.get("atendente") != null){
+            Long idAtendente = Long.parseLong(form.get("atendente"));
+            Funcionario funcionario = Funcionario.find.byId(idAtendente);
+            if(funcionario != null){
+                reserva.setAtendente(funcionario);
+            }
+        }
+
+        if(form.get("mesa") != null){
+            Long idMesa = Long.parseLong(form.get("mesa"));
+            Mesa mesa = Mesa.find.byId(idMesa);
+            if(mesa != null){
+                reserva.setMesa(mesa);
+            }
+        }
+
+        if(form.get("data") != null){
+            String string = form.get("data");
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = null;
+            try {
+                date = formatter.parse(string);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (date != null) reserva.setData(date);
+        }
+
+        if(form.get("quantidadeConvidados") != null){
+            reserva.setQuantidadeConvidados(Integer.parseInt(form.get("quantidadeConvidados")));
+        }
+
+        if(form.get("observacao") != null){
+            reserva.setObservacao(form.get("observacao"));
+        }
+        
         return create(reserva);
 
     }
@@ -164,11 +200,11 @@ public class Reserva extends Model {
         this.quantidadeConvidados = quantidadeConvidados;
     }
 
-    public List<Mesa> getMesas() {
-        return mesas;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public void setMesas(List<Mesa> mesas) {
-        this.mesas = mesas;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 }

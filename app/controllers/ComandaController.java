@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Comanda;
+import models.*;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -27,18 +27,17 @@ public class ComandaController extends Controller implements RestMethods {
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Comanda
-        return null;
+        return ok(views.html.main.render(views.html.Comanda.create.render(Funcionario.all(), Cliente.all(), Mesa.all(), Cortesia.all())));
     }
 
     @Override
     public Result save() {
         Form<Comanda> form = formFactory.form(Comanda.class).bindFromRequest();
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        Comanda comanda = Comanda.create(form.get());
+        Comanda comanda = Comanda.create(form.data());
 
         return ok(play.libs.Json.toJson(comanda));
     }

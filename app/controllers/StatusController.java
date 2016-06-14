@@ -28,8 +28,7 @@ public class StatusController extends Controller implements RestMethods{
 
     @Override
     public Result create() {
-        //TODO: retornar formulario de criacao de Status
-        return null;
+        return ok(views.html.main.render(views.html.Status.create.render()));
     }
 
     @Override

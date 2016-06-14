@@ -64,11 +64,11 @@ public class ReservaController extends Controller implements RestMethods{
 
         Form<Reserva> form = formFactory.form(Reserva.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+        //if (form.hasErrors()) {
+            //return badRequest(form.errorsAsJson());
+        //}
 
-        reserva = Reserva.update(id, form.get());
+        reserva = Reserva.update(id, form.data());
 
         return ok(play.libs.Json.toJson(reserva));
     }

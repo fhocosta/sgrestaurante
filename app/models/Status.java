@@ -17,8 +17,6 @@ public class Status extends Model {
     private long id;
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany
-    private List<Pedido> pedidos = new ArrayList<Pedido>();
 
     public Status() {
     }
@@ -62,11 +60,4 @@ public class Status extends Model {
         this.descricao = descricao;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
 }
