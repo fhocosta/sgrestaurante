@@ -1,0 +1,46 @@
+@(comandas: List[Comanda])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Comandas</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Data de Abertura</th>
+                <th>Total</th>
+                <th>Aberta?</th>
+                <th>Atendente</th>
+                <th>Data de Fechamento</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(comanda <- comandas){
+            <tr>
+                <td>@comanda.getDataAbertura().toLocaleString()</td>
+                <td>R$ @comanda.getTotal</td>
+                @if(comanda.isAberta()){
+                <td>Sim</td>
+                }else{
+                <td>Não</td>
+                }
+                <td>@comanda.getAtendente().getNome()</td>
+                @if(comanda.getDataFechamento() != null){
+                    <td>@comanda.getDataFechamento().toLocaleString()</td>
+                }else{
+                    <td>Comanda aberta!</td>
+                }
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@comanda.getId()" action="/comandas/@comanda.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@comanda.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

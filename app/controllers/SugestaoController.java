@@ -24,9 +24,9 @@ public class SugestaoController extends Controller implements RestMethods {
     public Result list() {
         List<Sugestao> sugestoes = Sugestao.all();
         if (sugestoes.size() != 0) {
-            return ok(play.libs.Json.toJson(sugestoes));
+            return ok(views.html.main.render(views.html.Sugestao.list.render(Sugestao.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Sugestões")));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SugestaoController extends Controller implements RestMethods {
 
         Sugestao sugestao = Sugestao.create(form.data());
 
-        return ok(play.libs.Json.toJson(sugestao));
+        return redirect("/sugestoes/all");
     }
 
     @Override
@@ -78,7 +78,7 @@ public class SugestaoController extends Controller implements RestMethods {
         Sugestao sugestao = Sugestao.find.byId(id);
         if (sugestao != null) {
             Sugestao.delete(id);
-            return ok("Sugestao apagado com Sucesso!");
+            return redirect("/sugestoes/all");
         }
         return notFound();
     }

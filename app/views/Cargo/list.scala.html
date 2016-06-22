@@ -1,0 +1,30 @@
+@(cargos: List[Cargo])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Cargos</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(cargo <- cargos){
+            <tr>
+                <td>@cargo.getNome()</td>
+                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@cargo.getId()" action="/cargos/@cargo.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@cargo.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

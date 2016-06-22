@@ -21,9 +21,9 @@ public class StatusController extends Controller implements RestMethods{
     public Result list() {
         List<Status> statuses = Status.all();
         if (statuses.size() != 0) {
-            return ok(play.libs.Json.toJson(statuses));
+            return ok(views.html.main.render(views.html.Status.list.render(Status.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Status")));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class StatusController extends Controller implements RestMethods{
 
         Status status = Status.create(form.get());
 
-        return ok(play.libs.Json.toJson(status));
+        return redirect("/status/all");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class StatusController extends Controller implements RestMethods{
         Status status = Status.find.byId(id);
         if (status != null) {
             Status.delete(id);
-            return ok("Status apagado com Sucesso!");
+            return redirect("/status/all");
         }
         return notFound();
     }

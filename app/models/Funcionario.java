@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.PrivateOwned;
 import play.Logger;
 
 import javax.persistence.*;
@@ -18,7 +19,8 @@ public class Funcionario extends Usuario {
     @Column(nullable = false)
     @ManyToOne
     private Cargo cargo;
-    @OneToMany
+    @PrivateOwned
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<Reserva>();
 
     public Funcionario() {
@@ -92,4 +94,7 @@ public class Funcionario extends Usuario {
         this.cargo = cargo;
     }
 
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
 }

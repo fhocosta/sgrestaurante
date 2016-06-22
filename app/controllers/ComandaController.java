@@ -20,9 +20,9 @@ public class ComandaController extends Controller implements RestMethods {
     public Result list() {
         List<Comanda> comandas = Comanda.all();
         if (comandas.size() != 0) {
-            return ok(play.libs.Json.toJson(comandas));
+            return ok(views.html.main.render(views.html.Comanda.list.render(Comanda.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Comandas")));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ComandaController extends Controller implements RestMethods {
 
         Comanda comanda = Comanda.create(form.data());
 
-        return ok(play.libs.Json.toJson(comanda));
+        return redirect("/comandas/all");
     }
 
     @Override
@@ -73,8 +73,20 @@ public class ComandaController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Comanda comanda = Comanda.find.byId(id);
         if (comanda != null) {
+            List<Pedido> list = Pedido.find.where().eq("comanda.id",id).findList();
+            if(list.size() > 0){
+                for(Pedido pedido: list){
+                    pedido.delete();
+                }
+            }
+            comanda.setAtendente(null);
+            comanda.setCliente(null);
+            comanda.setMesa(null);
+            comanda.setCortesia(null);
+            comanda.save();
+
             Comanda.delete(id);
-            return ok("Comanda apagado com Sucesso!");
+            return redirect("/comandas/all");
         }
         return notFound();
     }

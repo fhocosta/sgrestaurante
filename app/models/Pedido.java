@@ -16,11 +16,11 @@ public class Pedido extends Model {
 
     @Id
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Status status;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Produto> produtos = new ArrayList<Produto>();
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Comanda comanda;
 
     public Pedido() {
@@ -54,7 +54,7 @@ public class Pedido extends Model {
             }
         }
 
-        if(form.get("produto2") != null){
+        if(form.get("produto2") != null && !form.get("produto2").isEmpty()){
             Long id = Long.parseLong(form.get("produto2"));
             Produto produto = Produto.find.byId(id);
             if(produto != null){
@@ -144,6 +144,16 @@ public class Pedido extends Model {
 
     public List<Produto> getProdutos() {
         return produtos;
+    }
+    public String produtosToString(){
+        String string = "";
+        for (Produto produto: produtos){
+            if(!string.isEmpty()){
+                string += ",";
+            }
+            string += produto.getNome() + " ";
+        }
+        return string;
     }
 
     public void setProdutos(List<Produto> produtos) {

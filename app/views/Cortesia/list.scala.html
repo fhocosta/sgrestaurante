@@ -1,0 +1,33 @@
+@(cortesias: List[Cortesia])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Cortesias</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Disponível até</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(cortesia <- cortesias){
+            <tr>
+                <td>@cortesia.getProduto().getNome()</td>
+                <td>@cortesia.getQuantidade()</td>
+                <td>@cortesia.getDisponibilidade().toLocaleString()</td>
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@cortesia.getId()" action="/cortesias/@cortesia.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@cortesia.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

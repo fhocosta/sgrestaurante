@@ -2,6 +2,8 @@ package controllers;
 
 import javax.inject.Inject;
 import models.Cargo;
+import models.Funcionario;
+import models.Usuario;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -21,9 +23,9 @@ public class CargoController extends Controller implements RestMethods {
     public Result list() {
         List<Cargo> cargos = Cargo.all();
         if (cargos.size() != 0) {
-            return ok(play.libs.Json.toJson(cargos));
+            return ok(views.html.main.render(views.html.Cargo.list.render(Cargo.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Cargos")));
     }
 
     @Override
@@ -40,7 +42,7 @@ public class CargoController extends Controller implements RestMethods {
 
         Cargo cargo = Cargo.create(form.get());
 
-        return ok(play.libs.Json.toJson(cargo));
+        return redirect("/cargos/all");
     }
 
     @Override
@@ -74,8 +76,15 @@ public class CargoController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Cargo cargo = Cargo.find.byId(id);
         if (cargo != null) {
+            List<Funcionario> list = Funcionario.find.where().eq("cargo.id",id).findList();
+            if(list.size() > 0){
+                for(Funcionario funcionario: list){
+                    funcionario.setCargo(null);
+                    funcionario.save();
+                }
+            }
             Cargo.delete(id);
-            return ok("Cargo apagado com Sucesso!");
+            return redirect("/cargos/all");
         }
         return notFound();
     }

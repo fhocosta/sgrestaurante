@@ -24,9 +24,9 @@ public class ReservaController extends Controller implements RestMethods{
     public Result list() {
         List<Reserva> reservas = Reserva.all();
         if (reservas.size() != 0) {
-            return ok(play.libs.Json.toJson(reservas));
+            return ok(views.html.main.render(views.html.Reserva.list.render(Reserva.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Reservas")));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ReservaController extends Controller implements RestMethods{
 
         Reserva reserva = Reserva.create(form.data());
 
-        return ok(play.libs.Json.toJson(reserva));
+        return redirect("/reservas/all");
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ReservaController extends Controller implements RestMethods{
         Reserva reserva = Reserva.find.byId(id);
         if (reserva != null) {
             Reserva.delete(id);
-            return ok("Reserva apagado com Sucesso!");
+            return redirect("/reservas/all");
         }
         return notFound();
     }

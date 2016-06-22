@@ -1,0 +1,33 @@
+@(pedidos: List[Pedido])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Pedidos</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Comanda</th>
+                <th>Produtos</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(pedido <- pedidos){
+            <tr>
+                <td>@pedido.getStatus().getDescricao()</td>
+                <td>N. 000@pedido.getComanda().getId()</td>
+                <td>@pedido.produtosToString()</td>
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@pedido.getId()" action="/pedidos/@pedido.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@pedido.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

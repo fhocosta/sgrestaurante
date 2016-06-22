@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Mesa;
+import models.Reserva;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -21,9 +22,9 @@ public class MesaController extends Controller implements RestMethods {
     public Result list() {
         List<Mesa> mesas = Mesa.all();
         if (mesas.size() != 0) {
-            return ok(play.libs.Json.toJson(mesas));
+            return ok(views.html.main.render(views.html.Mesa.list.render(Mesa.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Mesas")));
     }
 
     @Override
@@ -40,7 +41,7 @@ public class MesaController extends Controller implements RestMethods {
 
         Mesa mesa = Mesa.create(form.get());
 
-        return ok(play.libs.Json.toJson(mesa));
+        return redirect("/mesas/all");
     }
 
     @Override
@@ -74,8 +75,15 @@ public class MesaController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Mesa mesa = Mesa.find.byId(id);
         if (mesa != null) {
+            List<Reserva> list = Reserva.find.where().eq("mesa.id",id).findList();
+            if(list.size() > 0){
+                for(Reserva reserva: list){
+                    reserva.setMesa(null);
+                    reserva.save();
+                }
+            }
             Mesa.delete(id);
-            return ok("Mesa apagado com Sucesso!");
+            return redirect("/mesas/all");
         }
         return notFound();
     }

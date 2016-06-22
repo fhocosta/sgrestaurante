@@ -19,7 +19,7 @@ public class Sugestao extends Model {
     private String titulo;
     @Column(name = "descricao")
     private String descricao;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
 

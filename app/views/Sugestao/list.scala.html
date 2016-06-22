@@ -1,0 +1,37 @@
+@(sugestoes: List[Sugestao])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Sugestões</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descricao</th>
+                <th>Usuário</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(sugestao <- sugestoes){
+            <tr>
+                <td>@sugestao.getTitulo()</td>
+                <td>@sugestao.getDescricao()</td>
+                @if(sugestao.getUsuario() != null){
+                    <td>@sugestao.getUsuario().getNome()</td>
+                }else{
+                    <td>Anônimo(a)</td>
+                }
+                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@sugestao.getId()" action="/sugestoes/@sugestao.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@sugestao.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

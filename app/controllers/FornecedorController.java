@@ -22,9 +22,9 @@ public class FornecedorController extends Controller implements RestMethods {
     public Result list() {
         List<Fornecedor> fornecedores = Fornecedor.all();
         if (fornecedores.size() != 0) {
-            return ok(play.libs.Json.toJson(fornecedores));
+            return ok(views.html.main.render(views.html.Fornecedor.list.render(Fornecedor.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Fornecedores")));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class FornecedorController extends Controller implements RestMethods {
 
         Fornecedor fornecedor = Fornecedor.create(form.get());
 
-        return ok(play.libs.Json.toJson(fornecedor));
+        return redirect("/fornecedores/all");
     }
 
     @Override
@@ -76,7 +76,7 @@ public class FornecedorController extends Controller implements RestMethods {
         Fornecedor fornecedor = Fornecedor.find.byId(id);
         if (fornecedor != null) {
             Fornecedor.delete(id);
-            return ok("Fornecedor apagado com Sucesso!");
+            return redirect("/fornecedores/all");
         }
         return notFound();
     }

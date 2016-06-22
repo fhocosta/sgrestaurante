@@ -20,17 +20,17 @@ public class Reserva extends Model {
 
     @Id
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
-    @ManyToOne
-    private Funcionario atendente;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Funcionario funcionario;
     @Column(name = "data")
     private Date data;
     @Column(name = "observacao")
     private String observacao;
     @Column(name = "quantidade_convidados")
     private int quantidadeConvidados;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Mesa mesa;
 
     public Reserva() {
@@ -169,11 +169,11 @@ public class Reserva extends Model {
     }
 
     public Funcionario getAtendente() {
-        return atendente;
+        return funcionario;
     }
 
     public void setAtendente(Funcionario atendente) {
-        this.atendente = atendente;
+        this.funcionario = funcionario;
     }
 
     public Date getData() {

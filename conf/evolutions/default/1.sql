@@ -98,7 +98,7 @@ create table tbl_produto_tbl_pedido (
 create table tbl_reserva (
   id                            bigint auto_increment not null,
   cliente_id                    bigint,
-  atendente_id                  bigint,
+  funcionario_id                bigint,
   data                          datetime(6),
   observacao                    varchar(255),
   quantidade_convidados         integer,
@@ -183,8 +183,8 @@ create index ix_tbl_produto_tbl_pedido_tbl_pedido on tbl_produto_tbl_pedido (tbl
 alter table tbl_reserva add constraint fk_tbl_reserva_cliente_id foreign key (cliente_id) references tbl_usuario (id) on delete restrict on update restrict;
 create index ix_tbl_reserva_cliente_id on tbl_reserva (cliente_id);
 
-alter table tbl_reserva add constraint fk_tbl_reserva_atendente_id foreign key (atendente_id) references tbl_usuario (id) on delete restrict on update restrict;
-create index ix_tbl_reserva_atendente_id on tbl_reserva (atendente_id);
+alter table tbl_reserva add constraint fk_tbl_reserva_funcionario_id foreign key (funcionario_id) references tbl_usuario (id) on delete restrict on update restrict;
+create index ix_tbl_reserva_funcionario_id on tbl_reserva (funcionario_id);
 
 alter table tbl_reserva add constraint fk_tbl_reserva_mesa_id foreign key (mesa_id) references tbl_mesa (id) on delete restrict on update restrict;
 create index ix_tbl_reserva_mesa_id on tbl_reserva (mesa_id);
@@ -246,8 +246,8 @@ drop index ix_tbl_produto_tbl_pedido_tbl_pedido on tbl_produto_tbl_pedido;
 alter table tbl_reserva drop foreign key fk_tbl_reserva_cliente_id;
 drop index ix_tbl_reserva_cliente_id on tbl_reserva;
 
-alter table tbl_reserva drop foreign key fk_tbl_reserva_atendente_id;
-drop index ix_tbl_reserva_atendente_id on tbl_reserva;
+alter table tbl_reserva drop foreign key fk_tbl_reserva_funcionario_id;
+drop index ix_tbl_reserva_funcionario_id on tbl_reserva;
 
 alter table tbl_reserva drop foreign key fk_tbl_reserva_mesa_id;
 drop index ix_tbl_reserva_mesa_id on tbl_reserva;

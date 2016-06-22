@@ -54,7 +54,7 @@
                         <label for="atendente" class="text-right">CORTESIA</label>
                     </div>
                     <div class="large-6 columns end">
-                        <select name="cortesia" id="cortesia" required="required">
+                        <select name="cortesia" id="cortesia">
                             <option value="">Selecione a Cortesia</option>
                             @for(cortesia <- cortesias){
                             <option value="@cortesia.getId()">@cortesia.getProduto().getNome() (@cortesia.getQuantidade() Restantes)</option>

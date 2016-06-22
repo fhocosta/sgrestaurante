@@ -22,13 +22,13 @@ public class Comanda extends Model {
     private float total;
     @Column(name = "aberta")
     private boolean aberta;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Funcionario atendente;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Mesa mesa;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cortesia cortesia;
 
     public static Finder<Long, Comanda> find = new Finder<Long, Comanda>(Comanda.class);
@@ -74,7 +74,7 @@ public class Comanda extends Model {
             }
         }
 
-        if(form.get("cortesia") != null){
+        if(form.get("cortesia") != null && !form.get("cortesia").isEmpty()){
             Long id  = Long.parseLong(form.get("cortesia"));
             Cortesia cortesia = Cortesia.find.byId(id);
             if (cortesia != null){

@@ -29,7 +29,7 @@ public class Cardapio extends Model {
     private boolean disponivel;
     @Column(name = "data")
     private Date data;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Produto> produtos = new ArrayList<Produto>();
 
     public Cardapio() {

@@ -1,0 +1,29 @@
+@(statuses: List[Status])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Status</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(status <- statuses){
+            <tr>
+                <td>@status.getDescricao()</td>
+                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@status.getId()" action="/status/@status.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@status.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

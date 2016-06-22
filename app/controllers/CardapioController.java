@@ -23,9 +23,9 @@ public class CardapioController extends Controller implements RestMethods{
     public Result list() {
         List<Cardapio> cardapios = Cardapio.all();
         if (cardapios.size() != 0) {
-            return ok(play.libs.Json.toJson(cardapios));
+            return ok(views.html.main.render(views.html.Cardapio.list.render(Cardapio.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Cardápios")));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CardapioController extends Controller implements RestMethods{
 
         Cardapio cardapio = Cardapio.create(form.data());
 
-        return ok(play.libs.Json.toJson(cardapio));
+        return redirect("/cardapios/all");
     }
 
     @Override
@@ -80,8 +80,8 @@ public class CardapioController extends Controller implements RestMethods{
 
         Cardapio cardapio = Cardapio.find.byId(id);
         if (cardapio != null) {
-            Cardapio.delete(id);
-            return ok("Cardapio apagado com Sucesso!");
+            Cardapio.find.ref(id).delete();
+            return redirect("/cardapios/all");
         }
         return notFound();
     }

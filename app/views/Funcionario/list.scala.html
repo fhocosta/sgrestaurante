@@ -1,0 +1,45 @@
+@(funcionarios: List[Funcionario])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Funcionários</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Usuário</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Cargo</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(funcionario <- funcionarios){
+            <tr>
+                <td>@funcionario.getNome()</td>
+                <td>@funcionario.getEmail()</td>
+                <td>@funcionario.getUsername()</td>
+                <td>@funcionario.getCpf()</td>
+                <td>@funcionario.getEndereco()</td>
+                <td>@funcionario.getTelefone()</td>
+                @if(funcionario.getCargo != null){
+                    <td>@funcionario.getCargo().getNome()</td>
+                }else{
+                    <td></td>
+                }
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@funcionario.getId()" action="/funcionarios/@funcionario.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@funcionario.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

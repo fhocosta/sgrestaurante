@@ -23,9 +23,9 @@ public class Produto extends Model {
     private boolean disponivel;
     @Column(name = "valor")
     private float valor;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Cardapio> cardapios = new ArrayList<Cardapio>();
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Pedido> pedidos = new ArrayList<Pedido>();
 
     public Produto() {

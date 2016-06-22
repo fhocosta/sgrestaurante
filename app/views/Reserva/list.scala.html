@@ -1,0 +1,37 @@
+@(reservas: List[Reserva])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Reservas</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Mesa</th>
+                <th>Qtde de Convidados</th>
+                <th>Descrição</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(reserva <- reservas){
+            <tr>
+                <td>@reserva.getCliente().getNome()</td>
+                <td>@reserva.getData().toLocaleString()</td>
+                <td>@reserva.getMesa().getNumero()</td>
+                <td>@reserva.getQuantidadeConvidados()</td>
+                <td>@reserva.getObservacao()</td>
+                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@reserva.getId()" action="/reservas/@reserva.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@reserva.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

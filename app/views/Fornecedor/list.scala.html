@@ -1,0 +1,35 @@
+@(fornecedores: List[Fornecedor])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Fornecedores</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(fornecedor <- fornecedores){
+            <tr>
+                <td>@fornecedor.getNome()</td>
+                <td>@fornecedor.getCnpj()</td>
+                <td>@fornecedor.getEndereco()</td>
+                <td>@fornecedor.getTelefone()</td>
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@fornecedor.getId()" action="/fornecedores/@fornecedor.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@fornecedor.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+@(produtos: List[Produto])
+<div class="row">
+    <div class="large-12 columns">
+        <h4>Produtos</h4>
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Disponível?</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(produto <- produtos){
+            <tr>
+                <td>@produto.getNome()</td>
+                <td>@produto.getDescricao()</td>
+                <td>R$@produto.getValor</td>
+                @if(produto.isDisponivel()){
+                    <td>Sim</td>
+                }else{
+                    <td>Não</td>
+                }
+                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td>
+                    <form id="@produto.getId()" action="/produtos/@produto.getId()/delete" method="post">
+                        <a href="javascript:document.getElementById('@produto.getId()').submit()" class="button alert"><i
+                                class="fi-x"></i></a>
+                    </form>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

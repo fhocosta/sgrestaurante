@@ -39,7 +39,7 @@
                         <label for="produto2" class="text-right">PRODUTO</label>
                     </div>
                     <div class="large-6 columns end">
-                        <select name="produto2" id="produto2" required="required">
+                        <select name="produto2" id="produto2">
                             <option value="">Selecione o Produto</option>
                             @for(produto <- produtos){
                             <option value="@produto.getId()">@produto.getNome()</option>

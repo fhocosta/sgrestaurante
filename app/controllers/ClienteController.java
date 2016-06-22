@@ -1,6 +1,8 @@
 package controllers;
 
 import models.Cliente;
+import models.Reserva;
+import models.Sugestao;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -23,9 +25,9 @@ public class ClienteController extends Controller implements RestMethods {
     public Result list() {
         List<Cliente> clientes = Cliente.all();
         if (clientes.size() != 0) {
-            return ok(play.libs.Json.toJson(clientes));
+            return ok(views.html.main.render(views.html.Cliente.list.render(Cliente.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Clientes")));
     }
 
     @Override
@@ -42,7 +44,7 @@ public class ClienteController extends Controller implements RestMethods {
 
         Cliente cliente = Cliente.create(form.get());
 
-        return ok(play.libs.Json.toJson(cliente));
+        return redirect("/clientes/all");
     }
     @Override
     public Result edit(Long id) {
@@ -75,8 +77,22 @@ public class ClienteController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente != null) {
+            List<Sugestao> list = Sugestao.find.where().eq("usuario.id",id).findList();
+            if(list.size() > 0){
+                for(Sugestao pedido: list){
+                    pedido.setUsuario(null);
+                    pedido.save();
+                }
+            }
+            List<Reserva> list2 = Reserva.find.where().eq("cliente.id",id).findList();
+            if(list2.size() > 0){
+                for(Reserva reserva: list2){
+                    reserva.setCliente(null);
+                    reserva.save();
+                }
+            }
             Cliente.delete(id);
-            return ok("Cliente apagado com Sucesso!");
+            return redirect("/clientes/all");
         }
         return notFound();
 

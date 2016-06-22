@@ -24,9 +24,9 @@ public class PedidoController extends Controller implements RestMethods{
     public Result list() {
         List<Pedido> pedidos = Pedido.all();
         if (pedidos.size() != 0) {
-            return ok(play.libs.Json.toJson(pedidos));
+            return ok(views.html.main.render(views.html.Pedido.list.render(Pedido.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Pedidos")));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PedidoController extends Controller implements RestMethods{
 
         Pedido pedido = Pedido.create(form.data());
 
-        return ok(play.libs.Json.toJson(pedido));
+        return redirect("/pedidos/all");
     }
 
     @Override
@@ -78,7 +78,7 @@ public class PedidoController extends Controller implements RestMethods{
         Pedido pedido = Pedido.find.byId(id);
         if (pedido != null) {
             Pedido.delete(id);
-            return ok("Pedido apagado com Sucesso!");
+            return redirect("/pedidos/all");
         }
         return notFound();
     }

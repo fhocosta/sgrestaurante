@@ -21,9 +21,9 @@ public class ProdutoController extends Controller implements RestMethods {
     public Result list() {
         List<Produto> produtos = Produto.all();
         if (produtos.size() != 0) {
-            return ok(play.libs.Json.toJson(produtos));
+            return ok(views.html.main.render(views.html.Produto.list.render(Produto.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Produtos")));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ProdutoController extends Controller implements RestMethods {
 
         Produto produto = Produto.create(form.get());
 
-        return ok(play.libs.Json.toJson(produto));
+        return redirect("/produtos/all");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class ProdutoController extends Controller implements RestMethods {
         Produto produto = Produto.find.byId(id);
         if (produto != null) {
             Produto.delete(id);
-            return ok("Produto apagado com Sucesso!");
+            return redirect("/produtos/all");
         }
         return notFound();
     }

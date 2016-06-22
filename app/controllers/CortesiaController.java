@@ -22,9 +22,9 @@ public class CortesiaController extends Controller implements RestMethods{
     public Result list() {
         List<Cortesia> comandas = Cortesia.all();
         if (comandas.size() != 0) {
-            return ok(play.libs.Json.toJson(comandas));
+            return ok(views.html.main.render(views.html.Cortesia.list.render(Cortesia.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Cortesias")));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CortesiaController extends Controller implements RestMethods{
 
         Cortesia cortesia = Cortesia.create(form.data());
 
-        return ok(play.libs.Json.toJson(cortesia));
+        return redirect("/cortesias/all");
     }
 
     @Override
@@ -75,8 +75,10 @@ public class CortesiaController extends Controller implements RestMethods{
     public Result delete(Long id) {
         Cortesia cortesia = Cortesia.find.byId(id);
         if (cortesia != null) {
+            cortesia.setProduto(null);
+            cortesia.save();
             Cortesia.delete(id);
-            return ok("Cortesia apagado com Sucesso!");
+            return redirect("/cortesias/all");
         }
         return notFound();
     }

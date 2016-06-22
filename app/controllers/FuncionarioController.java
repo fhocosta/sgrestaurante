@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import models.Cargo;
 import models.Funcionario;
+import models.Reserva;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -25,9 +26,9 @@ public class FuncionarioController extends Controller implements RestMethods {
     public Result list() {
         List<Funcionario> funcionarios = Funcionario.all();
         if (funcionarios.size() != 0) {
-            return ok(play.libs.Json.toJson(funcionarios));
+            return ok(views.html.main.render(views.html.Funcionario.list.render(Funcionario.all())));
         }
-        return noContent();
+        return ok(views.html.main.render(views.html.noContent.render("Funcionários")));
     }
 
     @Override
@@ -44,7 +45,7 @@ public class FuncionarioController extends Controller implements RestMethods {
 
         Funcionario funcionario = Funcionario.create(form.data());
 
-        return ok(play.libs.Json.toJson(funcionario));
+        return redirect("/funcionarios/all");
     }
 
     @Override
@@ -78,8 +79,11 @@ public class FuncionarioController extends Controller implements RestMethods {
     public Result delete(Long id) {
         Funcionario funcionario = Funcionario.find.byId(id);
         if (funcionario != null) {
+            funcionario.setReservas(null);
+            funcionario.save();
             Funcionario.delete(id);
-            return ok("Funcionario apagado com Sucesso!");
+
+            return redirect("/funcionarios/all");
         }
         return notFound();
     }

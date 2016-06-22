@@ -22,7 +22,7 @@ public class Cortesia extends Model {
     private int quantidade;
     @Column(name = "disponibilidade")
     private Date disponibilidade;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Produto produto;
 
     public Cortesia() {
