@@ -30,7 +30,7 @@
                 }else{
                     <td>Comanda aberta!</td>
                 }
-                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td><a href="/comandas/@comanda.getId()" class="button" ><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@comanda.getId()" action="/comandas/@comanda.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@comanda.getId()').submit()" class="button alert"><i

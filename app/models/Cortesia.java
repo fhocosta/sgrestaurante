@@ -69,12 +69,21 @@ public class Cortesia extends Model {
         return cortesia;
     }
 
-    public static Cortesia update(Long id, Cortesia c) {
+    public static Cortesia update(Long id, Map<String, String> form) {
         Cortesia cortesia = find.byId(id);
 
-        if (c.getQuantidade() != 0) cortesia.setQuantidade(c.getQuantidade());
-        if (c.getQuantidade() != 0) cortesia.setDisponibilidade(c.getDisponibilidade());
-        if (c.getProduto() != null) cortesia.setProduto(c.getProduto());
+        if(form.get("produto") != null){
+            Long idProduto = Long.parseLong(form.get("produto"));
+            Produto produto = Produto.find.byId(idProduto);
+            if(produto != null){
+                cortesia.setProduto(produto);
+            }
+        }
+
+        if(form.get("quantidade") != null){
+            cortesia.setQuantidade(Integer.parseInt(form.get("quantidade")));
+        }
+
 
         return create(cortesia);
     }

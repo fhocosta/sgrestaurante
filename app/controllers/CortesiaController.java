@@ -48,7 +48,7 @@ public class CortesiaController extends Controller implements RestMethods{
     public Result edit(Long id) {
         Cortesia cortesia = Cortesia.find.byId(id);
         if (cortesia != null) {
-            return ok(play.libs.Json.toJson(cortesia));
+            return ok(views.html.main.render(views.html.Cortesia.edit.render(cortesia, Produto.all())));
         }
         return notFound();
     }
@@ -62,13 +62,13 @@ public class CortesiaController extends Controller implements RestMethods{
 
         Form<Cortesia> form = formFactory.form(Cortesia.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+//        if (form.hasErrors()) {
+//            return badRequest(form.errorsAsJson());
+//        }
 
-        cortesia = Cortesia.update(id, form.get());
+        cortesia = Cortesia.update(id, form.data());
 
-        return ok(play.libs.Json.toJson(cortesia));
+        return redirect("/cortesias/all");
     }
 
     @Override

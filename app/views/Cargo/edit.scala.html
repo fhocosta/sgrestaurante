@@ -1,0 +1,32 @@
+@(cargo: Cargo)
+<div class="row">
+    <div class="large-12 columns">
+        <fieldset>
+            <legend>Cadastrar Cargo</legend>
+            <form action="/cargos/@cargo.getId()" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="nome" class="text-right">NOME</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="nome" name="nome" value="@cargo.getNome()" placeholder="Ex.: Cozinheiro" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

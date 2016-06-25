@@ -14,7 +14,7 @@
             @for(status <- statuses){
             <tr>
                 <td>@status.getDescricao()</td>
-                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td><a href="/status/@status.getId()" class="button"><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@status.getId()" action="/status/@status.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@status.getId()').submit()" class="button alert"><i

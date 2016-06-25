@@ -72,13 +72,38 @@ public class Funcionario extends Usuario {
         return funcionario;
     }
 
-    public static Funcionario update(Long id, Funcionario f) {
-        Funcionario funcionario = find.byId(f.getId());
-        Usuario.update(funcionario.getId(), f);
-        if (f.getCargo() != null) {
-            Cargo cargo = Cargo.find.byId(f.getCargo().getId());
-            funcionario.setCargo(cargo);
+    public static Funcionario update(Long id, Map<String, String> form) {
+        Funcionario funcionario = find.byId(id);
+
+        if(form.get("nome") != null){
+            funcionario.setNome(form.get("nome"));
         }
+        if(form.get("email") != null){
+            funcionario.setEmail(form.get("email"));
+        }
+        if(form.get("username") != null){
+            funcionario.setUsername(form.get("username"));
+        }
+        if(form.get("senha") != null && !form.get("senha").isEmpty()){
+            funcionario.setSenha(form.get("senha"));
+        }
+        if(form.get("cpf") != null){
+            funcionario.setCpf(form.get("cpf"));
+        }
+        if(form.get("endereco") != null){
+            funcionario.setEndereco(form.get("endereco"));
+        }
+        if(form.get("telefone") != null){
+            funcionario.setTelefone(form.get("telefone"));
+        }
+        if(form.get("cargo") != null){
+            Long idCargo = Long.parseLong(form.get("cargo"));
+            Cargo cargo = Cargo.find.byId(idCargo);
+            if (cargo != null){
+                funcionario.setCargo(cargo);
+            }
+        }
+
         return create(funcionario);
     }
 

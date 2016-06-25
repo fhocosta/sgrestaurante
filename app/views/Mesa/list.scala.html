@@ -16,7 +16,7 @@
             <tr>
                 <td>@mesa.getNumero()</td>
                 <td>@mesa.getLugares()</td>
-                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td><a href="/mesas/@mesa.getId()" class="button" ><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@mesa.getId()" action="/mesas/@mesa.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@mesa.getId()').submit()" class="button alert"><i

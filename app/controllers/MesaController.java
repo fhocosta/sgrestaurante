@@ -48,7 +48,7 @@ public class MesaController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Mesa mesa = Mesa.find.byId(id);
         if (mesa != null) {
-            return ok(play.libs.Json.toJson(mesa));
+            return ok(views.html.main.render(views.html.Mesa.edit.render(mesa)));
         }
         return notFound();
     }
@@ -68,7 +68,7 @@ public class MesaController extends Controller implements RestMethods {
 
         mesa = Mesa.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(mesa));
+        return redirect("/mesas/all");
     }
 
     @Override

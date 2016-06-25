@@ -84,8 +84,8 @@ public class Pedido extends Model {
         Pedido pedido = find.byId(id);
 
         if(form.get("status") != null){
-            Long idStatus = Long.parseLong(form.get("idStatus"));
-            Status status = Status.find.byId(id);
+            Long idStatus = Long.parseLong(form.get("status"));
+            Status status = Status.find.byId(idStatus);
             if(status != null){
                 pedido.setStatus(status);
             }

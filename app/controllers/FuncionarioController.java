@@ -52,7 +52,7 @@ public class FuncionarioController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Funcionario funcionario= Funcionario.find.byId(id);
         if (funcionario != null) {
-            return ok(play.libs.Json.toJson(funcionario));
+            return ok(views.html.main.render(views.html.Funcionario.edit.render(funcionario, Cargo.all())));
         }
         return notFound();
     }
@@ -66,13 +66,13 @@ public class FuncionarioController extends Controller implements RestMethods {
 
         Form<Funcionario> form = formFactory.form(Funcionario.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+//        if (form.hasErrors()) {
+//            return badRequest(form.errorsAsJson());
+//        }
 
-        funcionario = Funcionario.update(id, form.get());
+        funcionario = Funcionario.update(id, form.data());
 
-        return ok(play.libs.Json.toJson(funcionario));
+        return redirect("/funcionarios/all");
     }
 
     @Override

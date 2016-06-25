@@ -108,8 +108,8 @@ public class Reserva extends Model {
             }
         }
 
-        if(form.get("atendente") != null){
-            Long idAtendente = Long.parseLong(form.get("atendente"));
+        if(form.get("funcionario") != null){
+            Long idAtendente = Long.parseLong(form.get("funcionario"));
             Funcionario funcionario = Funcionario.find.byId(idAtendente);
             if(funcionario != null){
                 reserva.setAtendente(funcionario);

@@ -18,7 +18,7 @@
                 <td>@pedido.getStatus().getDescricao()</td>
                 <td>N. 000@pedido.getComanda().getId()</td>
                 <td>@pedido.produtosToString()</td>
-                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td><a href="/pedidos/@pedido.getId()" class="button" ><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@pedido.getId()" action="/pedidos/@pedido.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@pedido.getId()').submit()" class="button alert"><i

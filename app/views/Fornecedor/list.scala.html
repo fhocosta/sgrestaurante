@@ -20,7 +20,7 @@
                 <td>@fornecedor.getCnpj()</td>
                 <td>@fornecedor.getEndereco()</td>
                 <td>@fornecedor.getTelefone()</td>
-                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td><a href="/fornecedores/@fornecedor.getId()" class="button" ><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@fornecedor.getId()" action="/fornecedores/@fornecedor.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@fornecedor.getId()').submit()" class="button alert"><i

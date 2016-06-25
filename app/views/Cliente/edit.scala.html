@@ -1,0 +1,111 @@
+@(cliente: Cliente)
+<div class="row">
+    <div class="large-12-columns">
+        <fieldset>
+            <legend>Cadastrar Cliente</legend>
+            <form action="/clientes/@cliente.getId()" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="nome" class="text-right">NOME</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="nome" name="nome" value="@cliente.getNome()" placeholder="Ex.: João da Silva" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="email" class="text-right">E-MAIL</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="email" name="email" value="@cliente.getEmail()" placeholder="Ex.: joao@@silva.com"
+                               required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="username" class="text-right">NOME DE USUÁRIO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="username" name="username" value="@cliente.getUsername()" placeholder="Ex.: joaosilva"
+                               required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="senha" class="text-right">SENHA</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="password" id="senha" name="senha" value="@cliente.getSenha()" placeholder="******"
+                               required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="confirmarSenha" class="text-right">CONFIRMAR SENHA</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="******"
+                               required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="cpf" class="text-right">CPF</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="cpf" name="cpf" value="@cliente.getCpf()" placeholder="123.456.789-00">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="endereco" class="text-right">ENDEREÇO</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="endereco" name="endereco" value="@cliente.getEndereco()" placeholder="Rua João da Silva, 465. São Raimundo.">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="telefone" class="text-right">CELULAR</label>
+                    </div>
+                    <div class="small-6 columns end">
+                        <input type="text" id="telefone" name="telefone" value="@cliente.getTelefone()" placeholder="(92) 9123-4567">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 large-offset-2 columns end">
+                        <input id="receberMarketing" name="receberMarketing" value="@cliente.isReceberMarketing()" type="checkbox"><label for="receberMarketing">Deseja receber nossas promoções?</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+

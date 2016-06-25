@@ -141,8 +141,9 @@ public class Cardapio extends Model {
         this.data = data;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Produto getProdutos() {
+        return produtos.get(0);
+
     }
 
     public void setProdutos(List<Produto> produtos) {

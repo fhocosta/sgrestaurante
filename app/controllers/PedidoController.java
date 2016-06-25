@@ -10,12 +10,13 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import com.google.inject.Inject;
+
 import java.util.List;
 
 /**
  * Created by fhocosta on 07/06/16.
  */
-public class PedidoController extends Controller implements RestMethods{
+public class PedidoController extends Controller implements RestMethods {
 
     @Inject
     FormFactory formFactory;
@@ -38,7 +39,7 @@ public class PedidoController extends Controller implements RestMethods{
     public Result save() {
         Form<Pedido> form = formFactory.form(Pedido.class).bindFromRequest();
         //if (form.hasErrors()) {
-            //return badRequest(form.errorsAsJson());
+        //return badRequest(form.errorsAsJson());
         //}
 
         Pedido pedido = Pedido.create(form.data());
@@ -50,7 +51,7 @@ public class PedidoController extends Controller implements RestMethods{
     public Result edit(Long id) {
         Pedido pedido = Pedido.find.byId(id);
         if (pedido != null) {
-            return ok(play.libs.Json.toJson(pedido));
+            return ok(views.html.main.render(views.html.Pedido.edit.render(pedido, Status.all(), Produto.all(), Comanda.all())));
         }
         return notFound();
     }
@@ -64,13 +65,13 @@ public class PedidoController extends Controller implements RestMethods{
 
         Form<Pedido> form = formFactory.form(Pedido.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+//        if (form.hasErrors()) {
+//            return badRequest(form.errorsAsJson());
+//        }
 
         pedido = Pedido.update(id, form.data());
 
-        return ok(play.libs.Json.toJson(pedido));
+        return redirect("/pedidos/all");
     }
 
     @Override

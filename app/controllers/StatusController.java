@@ -47,7 +47,7 @@ public class StatusController extends Controller implements RestMethods{
     public Result edit(Long id) {
         Status status = Status.find.byId(id);
         if (status != null) {
-            return ok(play.libs.Json.toJson(status));
+            return ok(views.html.main.render(views.html.Status.edit.render(status)));
         }
         return notFound();
     }
@@ -67,7 +67,7 @@ public class StatusController extends Controller implements RestMethods{
 
         status = Status.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(status));
+        return redirect("/status/all");
     }
 
     @Override

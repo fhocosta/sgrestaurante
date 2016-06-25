@@ -17,12 +17,22 @@
             <tbody>
             @for(reserva <- reservas){
             <tr>
-                <td>@reserva.getCliente().getNome()</td>
+                @if(reserva.getCliente() != null){
+                    <td>@reserva.getCliente().getNome()</td>
+                }else{
+                <td></td>
+                }
+
+                @if(reserva.getData() != null){
                 <td>@reserva.getData().toLocaleString()</td>
+                }else{
+                <td></td>
+                }
+
                 <td>@reserva.getMesa().getNumero()</td>
                 <td>@reserva.getQuantidadeConvidados()</td>
                 <td>@reserva.getObservacao()</td>
-                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td><a href="/reservas/@reserva.getId()" class="button"><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@reserva.getId()" action="/reservas/@reserva.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@reserva.getId()').submit()" class="button alert"><i

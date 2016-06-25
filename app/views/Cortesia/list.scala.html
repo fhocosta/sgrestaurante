@@ -18,7 +18,7 @@
                 <td>@cortesia.getProduto().getNome()</td>
                 <td>@cortesia.getQuantidade()</td>
                 <td>@cortesia.getDisponibilidade().toLocaleString()</td>
-                <td><a href="" class="button" ><i class="fi-page-edit"></i></a></td>
+                <td><a href="/cortesias/@cortesia.getId()" class="button" ><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@cortesia.getId()" action="/cortesias/@cortesia.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@cortesia.getId()').submit()" class="button alert"><i

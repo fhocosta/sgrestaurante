@@ -50,7 +50,7 @@ public class ReservaController extends Controller implements RestMethods{
     public Result edit(Long id) {
         Reserva reserva = Reserva.find.byId(id);
         if (reserva != null) {
-            return ok(play.libs.Json.toJson(reserva));
+            return ok(views.html.main.render(views.html.Reserva.edit.render(reserva,Cliente.all(), Funcionario.all(), Mesa.all())));
         }
         return notFound();
     }
@@ -70,13 +70,18 @@ public class ReservaController extends Controller implements RestMethods{
 
         reserva = Reserva.update(id, form.data());
 
-        return ok(play.libs.Json.toJson(reserva));
+        return redirect("/reservas/all");
     }
 
     @Override
     public Result delete(Long id) {
         Reserva reserva = Reserva.find.byId(id);
         if (reserva != null) {
+
+            reserva.setCliente(null);
+            reserva.setMesa(null);
+            reserva.save();
+
             Reserva.delete(id);
             return redirect("/reservas/all");
         }

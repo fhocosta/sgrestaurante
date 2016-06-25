@@ -50,7 +50,7 @@ public class ClienteController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Cliente cliente = Cliente.find.byId(id);
         if (cliente != null) {
-            return ok(play.libs.Json.toJson(cliente));
+            return ok(views.html.main.render(views.html.Cliente.edit.render(cliente)));
         }
         return notFound();
     }
@@ -70,7 +70,7 @@ public class ClienteController extends Controller implements RestMethods {
 
         cliente = Cliente.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(cliente));
+        return redirect("/clientes/all");
     }
 
     @Override

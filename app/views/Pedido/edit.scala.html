@@ -1,0 +1,99 @@
+@(pedido: Pedido,statuses : List[Status], produtos: List[Produto], comandas: List[Comanda])
+
+<div class="row">
+    <div class="large-12-columns">
+        <fieldset>
+            <legend>Cadastrar Pedido</legend>
+            <form action="/pedidos/@pedido.getId()" method="post">
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="status" class="text-right">STATUS</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="status" id="status" required="required">
+                            <option value="">Selecione o Status</option>
+                            @for(status <- statuses){
+                            @if(pedido.getStatus().getId() == status.getId()){
+                            <option selected="selected" value="@status.getId()">@status.getDescricao()</option>
+                            }else{
+                            <option value="@status.getId()">@status.getDescricao()</option>
+                            }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="produto1" class="text-right">PRODUTO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="produto1" id="produto1" required="required">
+                            <option value="">Selecione o Produto</option>
+                            @for(produto <- produtos){
+                                @if(pedido.getProdutos.get(0).getId() == produto.getId() ){
+                                    <option selected value="@produto.getId()">@produto.getNome()</option>
+                                }else{
+                                    <option value="@produto.getId()">@produto.getNome()</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="produto2" class="text-right">PRODUTO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="produto2" id="produto2">
+                            <option value="">Selecione o Produto</option>
+                            @for(produto <- produtos){
+                                @if(pedido.getProdutos.get(1).getId() == produto.getId() ){
+                                    <option selected value="@produto.getId()">@produto.getNome()</option>
+                                }else{
+                                    <option value="@produto.getId()">@produto.getNome()</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="comanda" class="text-right">COMANDA</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="comanda" id="comanda" required="required">
+                            <option value="">Selecione a Comanda</option>
+                            @for(comanda <- comandas){
+                            @if(comanda.getId() == pedido.getComanda().getId()){
+                            <option selected="selected" value="@comanda.getId()">N. 0000@comanda.getId()</option>
+                            }else{
+                            <option value="@comanda.getId()">N. 0000@comanda.getId()</option>
+                            }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

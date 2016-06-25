@@ -46,7 +46,7 @@ public class ComandaController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Comanda comanda = Comanda.find.byId(id);
         if (comanda != null) {
-            return ok(play.libs.Json.toJson(comanda));
+            return ok(views.html.main.render(views.html.Comanda.edit.render(comanda, Funcionario.all(), Cliente.all(), Mesa.all(), Cortesia.all())));
         }
         return notFound();
     }
@@ -66,7 +66,7 @@ public class ComandaController extends Controller implements RestMethods {
 
         comanda = Comanda.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(comanda));
+        return redirect("/comandas/all");
     }
 
     @Override

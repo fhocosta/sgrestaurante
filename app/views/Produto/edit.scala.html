@@ -1,0 +1,58 @@
+@(produto: Produto)
+<div class="row">
+    <div class="large-12 columns">
+        <fieldset>
+            <legend>Cadastrar Produto</legend>
+            <form action="/produtos/@produto.getId()" method="post">
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="nome" class="text-right">NOME</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="nome" name="nome" value="@produto.getNome()" placeholder="Ex.: X-Salada" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="descricao" class="text-right">DESRIÇÃO</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="descricao" name="descricao" value="@produto.getDescricao()" placeholder="Ex.: Pão, Carne, Queijo, Presunto, Salada" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="valor" class="text-right">VALOR DE VENDA</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <input type="text" id="valor" name="valor" value="@produto.getValor()" placeholder="8.00" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 large-offset-2 columns end">
+                        <input id="disponivel" name="disponivel" type="checkbox" value="Boolean.parseBoolean(@produto.isDisponivel())"><label for="disponivel">Este Produto está disponível para venda?</label>
+                    </div>
+                </div>
+
+                <!--TODO: Criar atribuição para Cardápio caso queira. -->
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

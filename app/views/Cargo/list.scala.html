@@ -14,7 +14,7 @@
             @for(cargo <- cargos){
             <tr>
                 <td>@cargo.getNome()</td>
-                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                <td><a href="/cargos/@cargo.getId()" class="button"><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@cargo.getId()" action="/cargos/@cargo.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@cargo.getId()').submit()" class="button alert"><i

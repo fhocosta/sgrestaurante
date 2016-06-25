@@ -19,12 +19,16 @@
                 <td>@cardapio.getNome()</td>
                 <td>@cardapio.getDescricao()</td>
                 @if(cardapio.isDisponivel()){
-                <td>Sim</td>
+                    <td>Sim</td>
                 }else{
-                <td>Não</td>
+                    <td>Não</td>
                 }
-                <td>@cardapio.getData().toLocaleString()</td>
-                <td><a href="" class="button"><i class="fi-page-edit"></i></a></td>
+                @if(cardapio.getData() != null){
+                    <td>@cardapio.getData().toLocaleString()</td>
+                }else{
+                <td></td>
+                    }
+                <td><a href="/cardapios/@cardapio.getId()" class="button"><i class="fi-page-edit"></i></a></td>
                 <td>
                     <form id="@cardapio.getId()" action="/cardapios/@cardapio.getId()/delete" method="post">
                         <a href="javascript:document.getElementById('@cardapio.getId()').submit()" class="button alert"><i

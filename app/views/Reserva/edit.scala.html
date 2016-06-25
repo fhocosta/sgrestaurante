@@ -1,15 +1,16 @@
-@(clientes: List[Cliente], funcionarios: List[Funcionario], mesas: List[Mesa])
+@(reserva: Reserva, clientes: List[Cliente], funcionarios: List[Funcionario], mesas: List[Mesa])
 <div class="row">
     <div class="large-12-columns">
         <fieldset>
             <legend>Cadastrar Cliente</legend>
-            <form action="/reservas" method="post">
+            <form action="/reservas/@reserva.getId()" method="post">
                 <div class="row">
                     <div class="large-2 columns">
                         <label for="quantidadeConvidados" class="text-right">QTDE. CONVIDADOS</label>
                     </div>
                     <div class="small-6 columns end">
-                        <input type="text" id="quantidadeConvidados" name="quantidadeConvidados" placeholder="Ex.: 10" required="required">
+                        <input type="text" id="quantidadeConvidados" value="@reserva.getQuantidadeConvidados()"
+                               name="quantidadeConvidados" placeholder="Ex.: 10" required="required">
                     </div>
                 </div>
 
@@ -21,20 +22,27 @@
                         <select name="mesa" id="mesa" required="required">
                             <option value="">Selecione a Mesa</option>
                             @for(mesa <- mesas){
+                            @if(reserva.getMesa().getId() == mesa.getId()){
+                            <option selected="selected" value="@mesa.getId()">@mesa.getNumero() (@mesa.getLugares()
+                                Lugares)
+                            </option>
+                            }else{
                             <option value="@mesa.getId()">@mesa.getNumero() (@mesa.getLugares() Lugares)</option>
+                            }
+
                             }
                         </select>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="large-2 columns">
-                        <label for="data" class="text-right">DATA</label>
-                    </div>
-                    <div class="small-6 columns end">
-                        <input type="date" id="data" name="data" required="required">
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--<div class="large-2 columns">-->
+                        <!--<label for="data" class="text-right">DATA</label>-->
+                    <!--</div>-->
+                    <!--<div class="small-6 columns end">-->
+                        <!--<input type="date" id="data" name="data" value="@reserva.getData()" required="required">-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <div class="row">
                     <div class="large-2 columns">
@@ -44,7 +52,12 @@
                         <select name="cliente" id="cliente" required="required">
                             <option value="">Selecione o Cliente</option>
                             @for(cliente <- clientes){
+                            @if(reserva.getCliente.getId() == cliente.getId()){
+                            <option selected="selected" value="@cliente.getId()">@cliente.getNome()</option>
+                            }else{
                             <option value="@cliente.getId()">@cliente.getNome()</option>
+                            }
+
                             }
                         </select>
                     </div>
@@ -58,7 +71,12 @@
                         <select name="funcionario" id="funcionario" required="required">
                             <option value="">Selecione o Funcionário</option>
                             @for(funcionario <- funcionarios){
+                            if(funcionario.getId() == reserva.getAtendente().getId()){
+                            <option selected value="@funcionario.getId()">@funcionario.getNome()</option>
+                            }else{
                             <option value="@funcionario.getId()">@funcionario.getNome()</option>
+                            }
+
                             }
                         </select>
                     </div>
@@ -69,7 +87,7 @@
                         <label for="observacao" class="text-right">DESCRIÇÃO</label>
                     </div>
                     <div class="small-6 columns end">
-                        <textarea name="observacao" id="observacao" cols="30" rows="10" placeholder="Ex.: Aniversário do João!!" required="required"></textarea>
+                        <input type="text" name="observacao" id="observacao" value="@reserva.getObservacao()">
                     </div>
                 </div>
 

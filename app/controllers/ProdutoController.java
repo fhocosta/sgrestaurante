@@ -47,7 +47,7 @@ public class ProdutoController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Produto produto = Produto.find.byId(id);
         if (produto != null) {
-            return ok(play.libs.Json.toJson(produto));
+            return ok(views.html.main.render(views.html.Produto.edit.render(produto)));
         }
         return notFound();
     }
@@ -61,13 +61,13 @@ public class ProdutoController extends Controller implements RestMethods {
 
         Form<Produto> form = formFactory.form(Produto.class).bindFromRequest();
 
-        if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
-        }
+//        if (form.hasErrors()) {
+//            return badRequest(form.errorsAsJson());
+//        }
 
         produto = Produto.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(produto));
+        return redirect("/produtos/all");
     }
 
     @Override

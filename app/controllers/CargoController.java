@@ -49,7 +49,7 @@ public class CargoController extends Controller implements RestMethods {
     public Result edit(Long id) {
         Cargo cargo = Cargo.find.byId(id);
         if (cargo != null) {
-            return ok(play.libs.Json.toJson(cargo));
+            return ok(views.html.main.render(views.html.Cargo.edit.render(cargo)));
         }
         return notFound();
     }
@@ -69,7 +69,7 @@ public class CargoController extends Controller implements RestMethods {
 
         cargo = Cargo.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(cargo));
+        return redirect("/cargos/all");
     }
 
     @Override

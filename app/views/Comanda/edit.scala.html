@@ -1,0 +1,101 @@
+@(comanda: Comanda, funcionarios: List[Funcionario], clientes: List[Cliente], mesas: List[Mesa], cortesias: List[Cortesia])
+
+
+<div class="row">
+    <div class="large-12-columns">
+        <fieldset>
+            <legend>Cadastrar Comanda</legend>
+            <form action="/comandas/@comanda.getId()" method="post">
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="atendente" class="text-right">GARÇOM</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="atendente" id="atendente" required="required">
+                            <option value="">Selecione o Garçom</option>
+                            @for(funcionario <- funcionarios){
+                            @if(comanda.getAtendente().getId() == funcionario.getId()){
+                            <option selected="selected" value="@funcionario.getId()">@funcionario.getNome()</option>
+                            }else{
+                            <option value="@funcionario.getId()">@funcionario.getNome()</option>
+                            }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="atendente" class="text-right">CLIENTE</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="cliente" id="cliente" required="required">
+                            <option value="">Selecione o Cliente</option>
+                            @for(cliente <- clientes){
+                            @if(cliente.getId() == comanda.getCliente.getId()){
+                            <option selected value="@cliente.getId()">@cliente.getNome()</option>
+                            }else{
+                            <option value="@cliente.getId()">@cliente.getNome()</option>
+                            }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="mesa" class="text-right">MESA</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="mesa" id="mesa" required="required">
+                            <option value="">Selecione a Mesa</option>
+                            @for(mesa <- mesas){
+                            @if(mesa.getId() == comanda.getMesa().getId()){
+                            <option selected="selected" value="@mesa.getId()">@mesa.getNumero() (@mesa.getLugares() Lugares)</option>
+                            }else{
+                            <option value="@mesa.getId()">@mesa.getNumero() (@mesa.getLugares() Lugares)</option>
+                            }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label for="atendente" class="text-right">CORTESIA</label>
+                    </div>
+                    <div class="large-6 columns end">
+                        <select name="cortesia" id="cortesia">
+                            <option value="">Selecione a Cortesia</option>
+                            @for(cortesia <- cortesias){
+                            @if(cortesia.getId() == comanda.getCortesia().getId()){
+                            <option selected="selected" value="@cortesia.getId()">@cortesia.getProduto().getNome() (@cortesia.getQuantidade() Restantes)</option>
+                            }else{
+                            <option value="@cortesia.getId()">@cortesia.getProduto().getNome() (@cortesia.getQuantidade() Restantes)</option>
+                            }
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns end">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class="large-8 columns end">
+                        <a href="/" class="button alert float-left">Cancelar</a>
+                        <button id="submit" type="submit" class="button primary float-right">Enviar</button>
+                        <button type="reset" class="button secondary float-right">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

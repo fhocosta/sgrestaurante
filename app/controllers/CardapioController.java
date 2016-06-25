@@ -51,7 +51,7 @@ public class CardapioController extends Controller implements RestMethods{
 
         Cardapio cardapio = Cardapio.find.byId(id);
         if (cardapio != null) {
-            return ok(play.libs.Json.toJson(cardapio));
+            return ok(views.html.main.render(views.html.Cardapio.edit.render(cardapio, Produto.all())));
         }
         return notFound();
     }
@@ -72,7 +72,7 @@ public class CardapioController extends Controller implements RestMethods{
 
         cardapio = Cardapio.update(id, form.get());
 
-        return ok(play.libs.Json.toJson(cardapio));
+        return redirect("/cardapios/all");
     }
 
     @Override
